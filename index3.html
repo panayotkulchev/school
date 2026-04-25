@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английски 5 клас — ОУ "Димитър Благоев"</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a73e8;--dblue:#0d47a1;
+  --purple:#7b3fc4;--dpurp:#4a1a8c;
+  --green:#1e8a5e;--dgreen:#145e40;
+  --amber:#d97706;--damber:#92400e;
+  --teal:#0891b2;--dteal:#0e7490;
+  --rose:#e11d48;--drose:#9f1239;
+  --indigo:#4f46e5;--dindigo:#3730a3;
+  --olive:#65a30d;--dolive:#3f6212;
+  --cyan:#0e7490;--dcyan:#164e63;
+  --pink:#db2777;--dpink:#9d174d;
+  --emerald:#059669;--demerald:#065f46;
+  --red:#d32f2f;--bg:#f0f4fb;
+}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+/* HEADER */
+.site-header{background:linear-gradient(135deg,#0d47a1 0%,#1565c0 50%,#1a73e8 100%);color:white;box-shadow:0 3px 16px rgba(13,71,161,.3);position:relative;overflow:hidden}
+.site-header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%}
+.header-inner{max-width:980px;margin:0 auto;padding:20px 20px 0;position:relative;z-index:1;display:flex;align-items:flex-start;gap:16px}
+.flags-col{display:flex;flex-direction:column;gap:8px;padding-top:4px}
+.flag-svg{width:52px;height:34px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.25);flex-shrink:0}
+.header-text{flex:1}
+.school-name{font-size:12px;font-weight:600;opacity:.82;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.site-title{font-size:26px;font-weight:800;letter-spacing:-.5px;line-height:1.1;margin-bottom:4px}
+.site-subtitle{font-size:13px;opacity:.8;margin-bottom:16px}
+/* NAV */
+.nav-tabs{display:flex;gap:3px;flex-wrap:wrap;margin-top:4px}
+.nav-tab{padding:8px 14px;background:rgba(255,255,255,.12);border:none;border-radius:8px 8px 0 0;color:rgba(255,255,255,.75);font-size:12.5px;font-weight:600;cursor:pointer;transition:background .2s,color .2s;font-family:inherit;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.nav-tab:hover{background:rgba(255,255,255,.22);color:white}
+.nav-tab.active{background:var(--bg);color:var(--dblue);box-shadow:0 -2px 8px rgba(0,0,0,.08)}
+.nav-tab .badge{background:rgba(255,255,255,.25);border-radius:10px;padding:1px 7px;font-size:10px}
+.nav-tab.active .badge{background:var(--blue);color:white}
+/* PAGES */
+.page{display:none;flex:1}
+.page.active{display:block}
+/* HOME */
+.home-body{max-width:980px;margin:0 auto;padding:28px 20px 40px}
+.welcome-card{background:white;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,.07);padding:24px 28px;margin-bottom:24px;display:flex;gap:24px;align-items:flex-start}
+.welcome-illustration{flex-shrink:0;width:130px;height:130px}
+.welcome-text h2{font-size:20px;font-weight:700;color:var(--dblue);margin-bottom:8px}
+.welcome-text p{font-size:14.5px;color:#444;line-height:1.7;margin-bottom:6px}
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.topic-card{background:white;border-radius:13px;box-shadow:0 2px 12px rgba(0,0,0,.07);overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;border:2px solid transparent}
+.topic-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.tc-blue:hover{border-color:var(--blue)} .tc-purple:hover{border-color:var(--purple)}
+.tc-teal:hover{border-color:var(--teal)} .tc-rose:hover{border-color:var(--rose)}
+.tc-indigo:hover{border-color:var(--indigo)} .tc-amber:hover{border-color:var(--amber)}
+.tc-olive:hover{border-color:var(--olive)} .tc-cyan:hover{border-color:var(--cyan)}
+.tc-pink:hover{border-color:var(--pink)} .tc-emerald:hover{border-color:var(--emerald)}
+.topic-card-header{padding:15px 18px 12px;color:white;display:flex;align-items:center;gap:11px}
+.tc-blue   .topic-card-header{background:linear-gradient(135deg,var(--blue),var(--dblue))}
+.tc-purple .topic-card-header{background:linear-gradient(135deg,var(--purple),var(--dpurp))}
+.tc-teal   .topic-card-header{background:linear-gradient(135deg,var(--teal),var(--dteal))}
+.tc-rose   .topic-card-header{background:linear-gradient(135deg,var(--rose),var(--drose))}
+.tc-indigo .topic-card-header{background:linear-gradient(135deg,var(--indigo),var(--dindigo))}
+.tc-amber  .topic-card-header{background:linear-gradient(135deg,var(--amber),var(--damber))}
+.tc-olive  .topic-card-header{background:linear-gradient(135deg,var(--olive),var(--dolive))}
+.tc-cyan   .topic-card-header{background:linear-gradient(135deg,var(--cyan),var(--dcyan))}
+.tc-pink   .topic-card-header{background:linear-gradient(135deg,var(--pink),var(--dpink))}
+.tc-emerald .topic-card-header{background:linear-gradient(135deg,var(--emerald),var(--demerald))}
+.topic-icon{width:40px;height:40px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.topic-card-title{font-size:16px;font-weight:700}
+.topic-card-sub{font-size:11px;opacity:.8;margin-top:2px}
+.topic-card-body{padding:12px 18px 16px}
+.topic-card-body p{font-size:13px;color:#555;line-height:1.6;margin-bottom:10px}
+.topic-tags{display:flex;flex-wrap:wrap;gap:5px}
+.topic-tag{font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px}
+.tc-blue   .topic-tag{background:#e8f0fe;color:var(--dblue)}
+.tc-purple .topic-tag{background:#f3eaff;color:var(--dpurp)}
+.tc-teal   .topic-tag{background:#e0f2fe;color:var(--dteal)}
+.tc-rose   .topic-tag{background:#ffe4e6;color:var(--drose)}
+.tc-indigo .topic-tag{background:#e0e7ff;color:var(--dindigo)}
+.tc-amber  .topic-tag{background:#fef3c7;color:var(--damber)}
+.tc-olive  .topic-tag{background:#ecfccb;color:var(--dolive)}
+.tc-cyan   .topic-tag{background:#cffafe;color:var(--dcyan)}
+.tc-pink   .topic-tag{background:#fce7f3;color:var(--dpink)}
+.tc-emerald .topic-tag{background:#d1fae5;color:var(--demerald)}
+.open-btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:7px 14px;border-radius:7px;font-size:12.5px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:opacity .15s;color:white}
+.tc-blue   .open-btn{background:var(--blue)}   .tc-purple .open-btn{background:var(--purple)}
+.tc-teal   .open-btn{background:var(--teal)}   .tc-rose   .open-btn{background:var(--rose)}
+.tc-indigo .open-btn{background:var(--indigo)} .tc-amber  .open-btn{background:var(--amber)}
+.tc-olive  .open-btn{background:var(--olive)} .tc-cyan   .open-btn{background:var(--cyan)}
+.tc-pink   .open-btn{background:var(--pink)} .tc-emerald .open-btn{background:var(--emerald)}
+.open-btn:hover{opacity:.88}
+/* EXERCISE SHARED */
+.ex-page-header{max-width:900px;margin:24px auto 0;padding:0 18px}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:white;border:1.5px solid #ddd;border-radius:7px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#555;cursor:pointer;font-family:inherit;margin-bottom:14px;transition:background .15s}
+.back-btn:hover{background:#f4f4f4}
+.grammar-box{background:#fff;border-radius:10px;padding:16px 22px;margin-bottom:0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.gb-blue{border-left:5px solid var(--blue)}   .gb-purple{border-left:5px solid var(--purple)}
+.gb-teal{border-left:5px solid var(--teal)}   .gb-rose{border-left:5px solid var(--rose)}
+.gb-indigo{border-left:5px solid var(--indigo)} .gb-amber{border-left:5px solid var(--amber)}
+.gb-olive{border-left:5px solid var(--olive)} .gb-cyan{border-left:5px solid var(--cyan)}
+.gb-pink{border-left:5px solid var(--pink)} .gb-emerald{border-left:5px solid var(--emerald)}
+.grammar-box h3{font-size:12.5px;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+.gb-blue h3{color:var(--blue)} .gb-purple h3{color:var(--purple)} .gb-teal h3{color:var(--teal)}
+.gb-rose h3{color:var(--rose)} .gb-indigo h3{color:var(--indigo)} .gb-amber h3{color:var(--amber)}
+.gb-olive h3{color:var(--olive)} .gb-cyan h3{color:var(--cyan)}
+.gb-pink h3{color:var(--pink)} .gb-emerald h3{color:var(--emerald)}
+.grammar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+.grammar-card{border-radius:8px;padding:9px 13px;font-size:12.5px}
+.gb-blue   .grammar-card{background:#f0f4ff} .gb-purple .grammar-card{background:#f3eaff}
+.gb-teal   .grammar-card{background:#e0f7fa} .gb-rose   .grammar-card{background:#fff0f2}
+.gb-indigo .grammar-card{background:#eef2ff} .gb-amber  .grammar-card{background:#fffbeb}
+.gb-olive  .grammar-card{background:#f7fee7} .gb-cyan   .grammar-card{background:#ecfeff}
+.gb-pink   .grammar-card{background:#fce7f3} .gb-emerald .grammar-card{background:#d1fae5}
+.grammar-card .form{font-weight:700;font-size:13.5px}
+.gb-blue .grammar-card .form{color:var(--dblue)} .gb-purple .grammar-card .form{color:var(--dpurp)}
+.gb-teal .grammar-card .form{color:var(--dteal)} .gb-rose .grammar-card .form{color:var(--drose)}
+.gb-indigo .grammar-card .form{color:var(--dindigo)} .gb-amber .grammar-card .form{color:var(--damber)}
+.gb-olive .grammar-card .form{color:var(--dolive)} .gb-cyan .grammar-card .form{color:var(--dcyan)}
+.gb-pink .grammar-card .form{color:var(--dpink)} .gb-emerald .grammar-card .form{color:var(--demerald)}
+.grammar-card .example{color:#555;margin-top:2px;font-style:italic}
+.verb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin-top:12px}
+.verb-card{border:1.5px solid #d8b4fe;border-radius:7px;padding:6px 11px;font-size:13px;display:flex;align-items:center;gap:6px}
+.verb-card.teal{background:#e0f7fa;border-color:#67e8f9} .verb-card.purple{background:#f3eaff}
+.verb-base{font-weight:700} .verb-arrow{color:#aaa;font-size:11px} .verb-past{font-weight:700;color:var(--green)}
+.main{max-width:900px;margin:18px auto 0;padding:0 18px 50px}
+.section-card{background:#fff;border-radius:13px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:20px;overflow:hidden}
+.section-header{color:white;padding:12px 20px;font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:9px}
+.section-header .icon{width:24px;height:24px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0}
+.section-body{padding:16px 20px}
+.exercise-item{display:flex;align-items:flex-start;gap:11px;padding:7px 9px;border-radius:7px;margin-bottom:4px;font-size:14.5px;line-height:1.7;border:1.5px solid transparent;transition:border-color .2s,background .2s}
+.exercise-item:hover{background:#faf8ff;border-color:#e9d5ff}
+.num{font-size:11px;font-weight:700;min-width:22px;text-align:right;padding-top:5px;opacity:.55}
+.blank{border:none;border-bottom:2px solid #c4a1e8;background:transparent;font-size:14.5px;font-family:inherit;color:#1a1a2e;width:105px;padding:0 3px 1px;outline:none;text-align:center;transition:border-color .2s}
+.blank:focus{border-bottom-color:var(--purple)!important}
+.blank.correct{border-bottom-color:var(--green)!important;color:var(--green);font-weight:700}
+.blank.wrong{border-bottom-color:var(--red)!important;color:var(--red)}
+.hint-text{font-size:11px;color:var(--red);font-style:italic;display:none;margin-left:2px}
+.dialog-box{border-radius:9px;border:1.5px solid #e9d5ff;padding:13px 16px}
+.dialog-line{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px;font-size:14.5px;line-height:1.7}
+.dialog-line:last-child{margin-bottom:0}
+.speaker{font-size:11px;font-weight:800;min-width:40px;padding-top:5px;text-align:right;letter-spacing:.03em}
+.sp-blue{color:var(--blue)} .sp-green{color:var(--green)} .sp-purple{color:var(--purple)}
+.sp-teal{color:var(--teal)} .sp-rose{color:var(--rose)} .sp-indigo{color:var(--indigo)}
+.sp-olive{color:var(--olive)} .sp-cyan{color:var(--cyan)}
+.sp-pink{color:var(--pink)} .sp-emerald{color:var(--emerald)}
+.word-bank{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.chip{border-radius:20px;padding:3px 12px;font-size:13px;font-weight:700;border:1.5px solid}
+.chip-purple{background:#f3eaff;color:var(--dpurp);border-color:#d8b4fe}
+.chip-blue{background:#e8f0fe;color:var(--dblue);border-color:#c5d8fc}
+.chip-amber{background:#fef3c7;color:var(--damber);border-color:#fde68a}
+.chip-teal{background:#e0f7fa;color:var(--dteal);border-color:#67e8f9}
+.chip-rose{background:#ffe4e6;color:var(--drose);border-color:#fda4af}
+.chip-indigo{background:#e0e7ff;color:var(--dindigo);border-color:#a5b4fc}
+.chip-green{background:#e6f4ea;color:var(--dgreen);border-color:#b8dfc5}
+.chip-olive{background:#ecfccb;color:var(--dolive);border-color:#bef264}
+.chip-cyan{background:#cffafe;color:var(--dcyan);border-color:#67e8f9}
+.chip-pink{background:#fce7f3;color:var(--dpink);border-color:#f9a8d4}
+.chip-emerald{background:#d1fae5;color:var(--demerald);border-color:#6ee7b7}
+.controls{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}
+button{padding:8px 18px;font-size:13px;font-weight:700;border-radius:7px;cursor:pointer;border:none;transition:transform .1s,opacity .15s;font-family:inherit}
+button:active{transform:scale(.97)}
+.btn-check{color:white;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.btn-check:hover{opacity:.88}
+.btn-reset{background:#fff;color:#555;border:1.5px solid #ccc}
+.btn-reset:hover{background:#f4f4f4}
+.score-box{margin-top:10px;padding:10px 15px;border-radius:9px;font-size:14px;font-weight:600;display:none;border:1.5px solid transparent}
+.score-box.show{display:block}
+.score-box.good{background:#e6f4ea;color:var(--green);border-color:#b8dfc5}
+.score-box.ok{background:#fff8e1;color:#b5630a;border-color:#ffe082}
+.score-box.bad{background:#fce8e8;color:#c62828;border-color:#f5c0c0}
+.pb-wrap{background:#e0e0e0;border-radius:8px;height:7px;margin-top:9px;overflow:hidden}
+.pb{height:100%;border-radius:8px;transition:width .5s ease;width:0%}
+/* LANG SWITCHER */
+.lang-switcher{display:flex;gap:4px;align-items:center;margin-left:auto;padding-bottom:4px;align-self:flex-end}
+.lang-btn{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:6px;color:white;font-size:12px;font-weight:700;padding:4px 10px;cursor:pointer;font-family:inherit;transition:background .2s;display:flex;align-items:center;gap:4px}
+.lang-btn:hover{background:rgba(255,255,255,.28)}
+.lang-btn.active{background:white;color:var(--dblue);border-color:white}
+footer{background:var(--dblue);color:rgba(255,255,255,.85);text-align:center;padding:18px 20px;font-size:13px;margin-top:auto}
+footer span{opacity:.6;font-size:12px;display:block;margin-top:3px}
+@media(max-width:640px){
+  .site-title{font-size:20px} .header-inner{flex-direction:column;gap:10px}
+  .flags-col{flex-direction:row} .welcome-card{flex-direction:column}
+  .nav-tab{padding:7px 10px;font-size:11.5px} .section-body{padding:12px 14px}
+}
+/* NOTIFICATION MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-box{background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.18);padding:32px 28px;max-width:420px;width:90%;transform:translateY(20px);transition:transform .25s}
+.modal-overlay.show .modal-box{transform:translateY(0)}
+.modal-icon{font-size:42px;text-align:center;margin-bottom:12px}
+.modal-title{font-size:19px;font-weight:700;color:var(--dgreen);text-align:center;margin-bottom:8px}
+.modal-sub{font-size:14px;color:#555;text-align:center;margin-bottom:20px;line-height:1.6}
+.modal-input{width:100%;border:1.5px solid #ccc;border-radius:8px;padding:10px 14px;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:14px}
+.modal-input:focus{border-color:var(--green)}
+.modal-btns{display:flex;gap:10px}
+.modal-btn-yes{flex:1;padding:10px;background:var(--green);color:white;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.modal-btn-yes:hover{opacity:.88}
+.modal-btn-yes:disabled{opacity:.5;cursor:not-allowed}
+.modal-btn-no{flex:1;padding:10px;background:#fff;color:#555;border:1.5px solid #ccc;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
+.modal-btn-no:hover{background:#f4f4f4}
+.modal-status{font-size:13px;text-align:center;margin-top:12px;min-height:20px;font-weight:600}
+.modal-status.ok{color:var(--green)}
+.modal-status.err{color:var(--red)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+// I18N — lives in <head> so setLang() is available before DOM buttons fire
+const LANGS = {
+  bg: {
+    schoolName:'🏫 ОУ "Димитър Благоев" — гр. Велико Търново',
+    siteTitle:'Английски език — 5 клас',
+    siteSubtitle:'Интерактивни упражнения по граматика',
+    navHome:'🏠 Начало',navIrreg:'Неправилни глаголи',
+    welcomeTitle:'Добре дошли! 👋',
+    welcomeP1:'Тук ще намериш интерактивни упражнения по английска граматика за 5 клас. Избери тема от менюто горе или от картите по-долу.',
+    welcomeP2:'Попълни празните места, натисни "Провери отговорите" и виж резултата веднага!',
+    checkBtn:'"Провери отговорите"',topicsHeading:'📚 Теми',
+    backBtn:'← Назад',checkLabel:'✔ Провери',resetLabel:'↺ Изтрий',
+    checkDialog:'✔ Провери',resetDialog:'↺ Изтрий',
+    scoreGood:'🎉 Браво! Всички верни!',scoreOk:'👍 Добра работа!',scoreBad:'💪 Опитай пак!',
+    scoreText:'Резултат',answerLabel:'Отговор:',openBtn:'Отвори →',
+    footerMain:'Английски език — 5 клас | ОУ "Димитър Благоев", гр. Велико Търново',
+    footerSub:'Автор: Панайот Кулчев / Panayot Kulchev',
+    tc_waswere_title:'Was / Were',tc_waswere_sub:'Минало време на "to be"',tc_waswere_desc:'Кога се използват was и were, отрицания и въпроси.',
+    tc_did_title:"Did / Didn't",tc_did_sub:'Past Simple — ed глаголи',tc_did_desc:"Глаголи с -ed и образуване на въпроси с did/didn't.",
+    tc_ps_title:'Present Simple',tc_ps_sub:"do / does / don't / doesn't",tc_ps_desc:'Сегашно просто — навици, факти, редовни действия.',
+    tc_pc_title:'Present Continuous',tc_pc_sub:'am / is / are + -ing',tc_pc_desc:'Сегашно продължително — действия, случващи се сега.',
+    tc_ir_title:'Неправилни глаголи',tc_ir_sub:'go→went, see→saw...',tc_ir_desc:'Най-важните неправилни глаголи в минало просто.',
+    tc_th_title:'There is / There are',tc_th_sub:'Описване на места',tc_th_desc:'Как да опишем какво има някъде — единствено и множествено.',
+    tc_can_title:"Can / Can't",tc_can_sub:'Умения и разрешения',tc_can_desc:"Изразяване на умения, разрешения и забрани с can и can't.",
+    tc_prep_title:'Prepositions',tc_prep_sub:'in, on, at, under, next to...',tc_prep_desc:'Предлози за място и време — къде се намират нещата.',
+    ps_desc1:'Внимавай — за he/she/it глаголът получава -s или -es!',
+    pc_desc1:'Двама приятели говорят за навиците си.',
+    pc_dlgDesc:'Майка се обажда на детето си — какво прави то в момента?',
+    ir_dlgDesc:'Разговор за изминалото лято.',
+    th_dlgDesc:'Приятел те пита за новото жилище — опиши накратко.',
+    can_desc3:'Двама приятели разговарят за уменията си.',
+    prep_desc3:'Приятел те пита за стаята ти — опиши накратко.',
+    ww_dlgDesc:'Двама приятели разговарят за уикенда.',
+    did_dlgDesc:'Двама приятели разговарят след уикенда.',
+  },
+  en: {
+    schoolName:'🏫 Primary School "Dimitar Blagoev" — Veliko Tarnovo',
+    siteTitle:'English Language — Grade 5',
+    siteSubtitle:'Interactive Grammar Exercises',
+    navHome:'🏠 Home',navIrreg:'Irregular Verbs',
+    welcomeTitle:'Welcome! 👋',
+    welcomeP1:"Here you'll find interactive English grammar exercises for Grade 5. Choose a topic from the menu above or from the cards below.",
+    welcomeP2:'Fill in the blanks, press "Check Answers" and see your result instantly!',
+    checkBtn:'"Check Answers"',topicsHeading:'📚 Topics',
+    backBtn:'← Back',checkLabel:'✔ Check',resetLabel:'↺ Clear',
+    checkDialog:'✔ Check',resetDialog:'↺ Clear',
+    scoreGood:'🎉 Perfect! All correct!',scoreOk:'👍 Good work!',scoreBad:'💪 Try again!',
+    scoreText:'Score',answerLabel:'Answer:',openBtn:'Open →',
+    footerMain:'English Language — Grade 5 | Primary School "Dimitar Blagoev", Veliko Tarnovo',
+    footerSub:'Author: Панайот Кулчев / Panayot Kulchev',
+    tc_waswere_title:'Was / Were',tc_waswere_sub:'Past tense of "to be"',tc_waswere_desc:'When to use was and were, negatives and questions.',
+    tc_did_title:"Did / Didn't",tc_did_sub:'Past Simple — ed verbs',tc_did_desc:"Verbs with -ed and forming questions with did/didn't.",
+    tc_ps_title:'Present Simple',tc_ps_sub:"do / does / don't / doesn't",tc_ps_desc:'Present simple — habits, facts, regular actions.',
+    tc_pc_title:'Present Continuous',tc_pc_sub:'am / is / are + -ing',tc_pc_desc:'Present continuous — actions happening right now.',
+    tc_ir_title:'Irregular Verbs',tc_ir_sub:'go→went, see→saw...',tc_ir_desc:'The most important irregular verbs in the past simple.',
+    tc_th_title:'There is / There are',tc_th_sub:'Describing places',tc_th_desc:'How to describe what exists somewhere — singular and plural.',
+    tc_can_title:"Can / Can't",tc_can_sub:'Abilities and permissions',tc_can_desc:"Expressing abilities, permissions and prohibitions with can/can't.",
+    tc_prep_title:'Prepositions',tc_prep_sub:'in, on, at, under, next to...',tc_prep_desc:'Prepositions of place and time — where things are located.',
+    ps_desc1:'Remember — for he/she/it the verb gets -s or -es!',
+    pc_desc1:'Two friends are talking about their habits.',
+    pc_dlgDesc:'Mum calls her child — what are they doing right now?',
+    ir_dlgDesc:'A conversation about last summer.',
+    th_dlgDesc:'A friend asks about your new home — describe it.',
+    can_desc3:'Two friends talk about their abilities.',
+    prep_desc3:"A friend asks about your room — describe it.",
+    ww_dlgDesc:'Two friends talk about their weekend.',
+    did_dlgDesc:'Two friends talk after the weekend.',
+  }
+};
+
+let currentLang = 'bg';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('lang-bg').classList.toggle('active', lang==='bg');
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  const T = LANGS[lang];
+
+  // Update data-i18n elements — preserve child nodes (badge spans etc.)
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (T[key] === undefined) return;
+    if (el.querySelector('*')) {
+      for (const node of el.childNodes) {
+        if (node.nodeType === Node.TEXT_NODE) { node.textContent = T[key] + ' '; break; }
+      }
+    } else {
+      el.textContent = T[key];
+    }
+  });
+
+  // Back buttons
+  document.querySelectorAll('.back-btn').forEach(el => el.textContent = T.backBtn);
+
+  // Check / Reset buttons
+  document.querySelectorAll('.btn-check').forEach(el => {
+    const isDlg = el.getAttribute('onclick') && el.getAttribute('onclick').includes('dlg');
+    el.textContent = isDlg ? T.checkDialog : T.checkLabel;
+  });
+  document.querySelectorAll('.btn-reset').forEach(el => el.textContent = T.resetLabel);
+
+  // Open buttons on home cards
+  document.querySelectorAll('.open-btn').forEach(el => el.textContent = T.openBtn);
+
+  // Topic cards
+  [['waswere','tc_waswere'],['did','tc_did'],['presSimple','tc_ps'],
+   ['presCont','tc_pc'],['irreg','tc_ir'],['there','tc_th'],
+   ['can','tc_can'],['prep','tc_prep']].forEach(([page,key]) => {
+    const card = document.querySelector(`.topic-card[onclick*="${page}"]`);
+    if (!card) return;
+    const t = card.querySelector('.topic-card-title');
+    const s = card.querySelector('.topic-card-sub');
+    const d = card.querySelector('.topic-card-body p');
+    if (t) t.textContent = T[key+'_title'] || '';
+    if (s) s.textContent = T[key+'_sub']   || '';
+    if (d) d.textContent = T[key+'_desc']  || '';
+  });
+
+  // data-desc paragraphs
+  document.querySelectorAll('[data-desc]').forEach(el => {
+    const key = el.dataset.desc;
+    if (T[key]) el.textContent = T[key];
+  });
+
+  // Footer
+  const fMain = document.querySelector('footer div');
+  const fSub  = document.querySelector('footer span');
+  if (fMain) fMain.textContent = T.footerMain;
+  if (fSub)  fSub.textContent  = T.footerSub;
+
+  // Update visible score boxes
+  document.querySelectorAll('.score-box.show').forEach(box => {
+    const m = box.textContent.match(/(\d+)\/(\d+) \((\d+)%\)/);
+    if (!m) return;
+    const [,ok,tot,pct] = m;
+    const emoji = +pct===100 ? T.scoreGood : +pct>=70 ? T.scoreOk : T.scoreBad;
+    box.textContent = `${T.scoreText}: ${ok}/${tot} (${pct}%) — ${emoji}`;
+  });
+}
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="site-header">
+<div class="header-inner">
+  <div class="flags-col">
+    <svg class="flag-svg" viewBox="0 0 52 34"><rect width="52" height="11.3" fill="#fff"/><rect width="52" height="11.3" y="11.3" fill="#00966E"/><rect width="52" height="11.4" y="22.6" fill="#D62612"/></svg>
+    <svg class="flag-svg" viewBox="0 0 52 34"><rect width="52" height="34" fill="#012169"/><path d="M0,0 L52,34 M52,0 L0,34" stroke="#fff" stroke-width="6"/><path d="M0,0 L52,34 M52,0 L0,34" stroke="#C8102E" stroke-width="4"/><path d="M26,0 V34 M0,17 H52" stroke="#fff" stroke-width="9"/><path d="M26,0 V34 M0,17 H52" stroke="#C8102E" stroke-width="5.5"/></svg>
+  </div>
+  <div class="header-text">
+    <div class="school-name" data-i18n="schoolName">🏫 ОУ "Димитър Благоев" — гр. Велико Търново</div>
+    <div class="site-title" data-i18n="siteTitle">Английски език — 5 клас</div>
+    <div class="site-subtitle" data-i18n="siteSubtitle">Интерактивни упражнения по граматика</div>
+    <nav class="nav-tabs">
+      <button class="nav-tab active" onclick="showPage('home')" id="tab-home" data-i18n="navHome">🏠 Начало</button>
+      <button class="nav-tab" onclick="showPage('waswere')" id="tab-waswere">Was/Were <span class="badge">3</span></button>
+      <button class="nav-tab" onclick="showPage('did')" id="tab-did">Did/Didn't <span class="badge">4</span></button>
+      <button class="nav-tab" onclick="showPage('presSimple')" id="tab-presSimple">Present Simple <span class="badge">3</span></button>
+      <button class="nav-tab" onclick="showPage('presCont')" id="tab-presCont">Present Cont. <span class="badge">3</span></button>
+      <button class="nav-tab" onclick="showPage('irreg')" id="tab-irreg" data-i18n="navIrreg">Неправилни глаголи <span class="badge">3</span></button>
+      <button class="nav-tab" onclick="showPage('there')" id="tab-there">There is/are <span class="badge">3</span></button>
+      <button class="nav-tab" onclick="showPage('can')" id="tab-can">Can / Can't <span class="badge">3</span></button>
+      <button class="nav-tab" onclick="showPage('prep')" id="tab-prep">Prepositions <span class="badge">3</span></button>
+      <button class="nav-tab" onclick="showPage('wh1')" id="tab-wh1">WH- Questions I <span class="badge">4</span></button>
+      <button class="nav-tab" onclick="showPage('wh2')" id="tab-wh2">WH- Questions II <span class="badge">3</span></button>
+    </nav>
+  </div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" id="lang-bg" onclick="setLang('bg')">🇧🇬 БГ</button>
+    <button class="lang-btn" id="lang-en" onclick="setLang('en')">🇬🇧 EN</button>
+  </div>
+</div>
+</div>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active">
+<div class="home-body">
+  <div class="welcome-card">
+    <svg class="welcome-illustration" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="88" width="114" height="7" rx="3" fill="#d4a96a"/>
+      <rect x="18" y="95" width="9" height="22" rx="2" fill="#c09050"/>
+      <rect x="103" y="95" width="9" height="22" rx="2" fill="#c09050"/>
+      <rect x="27" y="67" width="36" height="24" rx="3" fill="#4fc3f7"/>
+      <rect x="63" y="67" width="36" height="24" rx="3" fill="#81d4fa"/>
+      <line x1="63" y1="67" x2="63" y2="91" stroke="#0288d1" stroke-width="1.5"/>
+      <line x1="35" y1="75" x2="55" y2="75" stroke="white" stroke-width="1.5" opacity=".7"/>
+      <line x1="35" y1="81" x2="52" y2="81" stroke="white" stroke-width="1.5" opacity=".7"/>
+      <line x1="71" y1="75" x2="91" y2="75" stroke="white" stroke-width="1.5" opacity=".7"/>
+      <line x1="71" y1="81" x2="88" y2="81" stroke="white" stroke-width="1.5" opacity=".7"/>
+      <circle cx="40" cy="47" r="13" fill="#ffcc80"/>
+      <rect x="31" y="58" width="18" height="20" rx="4" fill="#1a73e8"/>
+      <path d="M27,43 Q40,27 53,43" fill="#5d4037"/>
+      <circle cx="36" cy="47" r="1.8" fill="#333"/><circle cx="44" cy="47" r="1.8" fill="#333"/>
+      <path d="M36,53 Q40,57 44,53" stroke="#333" stroke-width="1.4" fill="none"/>
+      <rect x="51" y="63" width="3" height="16" rx="1" fill="#ffd54f" transform="rotate(-20 51 63)"/>
+      <polygon points="51,79 54,79 52.5,84" fill="#ef9a9a" transform="rotate(-20 51 63)"/>
+      <circle cx="92" cy="47" r="13" fill="#ffb74d"/>
+      <rect x="83" y="58" width="18" height="20" rx="4" fill="#7b3fc4"/>
+      <path d="M79,40 Q92,25 105,40 L105,56 Q92,47 79,56Z" fill="#3e2723"/>
+      <circle cx="88" cy="47" r="1.8" fill="#333"/><circle cx="96" cy="47" r="1.8" fill="#333"/>
+      <path d="M88,53 Q92,57 96,53" stroke="#333" stroke-width="1.4" fill="none"/>
+      <text x="110" y="32" font-size="15" fill="#ffd600">★</text>
+      <text x="14" y="32" font-size="13" fill="#ff7043">A</text>
+      <text x="21" y="27" font-size="10" fill="#42a5f5">B</text>
+    </svg>
+    <div class="welcome-text">
+      <h2 data-i18n="welcomeTitle">Добре дошли! 👋</h2>
+      <p data-i18n="welcomeP1">Тук ще намериш интерактивни упражнения по английска граматика за 5 клас. Избери тема от менюто горе или от картите по-долу.</p>
+      <p data-i18n="welcomeP2">Попълни празните места, натисни <strong data-i18n="checkBtn">"Провери отговорите"</strong> и виж резултата веднага!</p>
+    </div>
+  </div>
+
+  <div style="font-size:16px;font-weight:700;color:#333;margin-bottom:13px" data-i18n="topicsHeading">📚 Теми</div>
+  <div class="topics-grid">
+
+    <div class="topic-card tc-blue" onclick="showPage('waswere')">
+      <div class="topic-card-header"><div class="topic-icon">🕐</div><div><div class="topic-card-title">Was / Were</div><div class="topic-card-sub">Минало време на "to be"</div></div></div>
+      <div class="topic-card-body"><p>Кога се използват was и were, отрицания и въпроси.</p>
+      <div class="topic-tags"><span class="topic-tag">was/were</span><span class="topic-tag">wasn't/weren't</span><span class="topic-tag">WH въпроси</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-purple" onclick="showPage('did')">
+      <div class="topic-card-header"><div class="topic-icon">✏️</div><div><div class="topic-card-title">Did / Didn't</div><div class="topic-card-sub">Past Simple — ed глаголи</div></div></div>
+      <div class="topic-card-body"><p>Глаголи с -ed и образуване на въпроси с did/didn't.</p>
+      <div class="topic-tags"><span class="topic-tag">played/watched</span><span class="topic-tag">did/didn't</span><span class="topic-tag">WH въпроси</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-teal" onclick="showPage('presSimple')">
+      <div class="topic-card-header"><div class="topic-icon">⚡</div><div><div class="topic-card-title">Present Simple</div><div class="topic-card-sub">do / does / don't / doesn't</div></div></div>
+      <div class="topic-card-body"><p>Сегашно просто — навици, факти, редовни действия.</p>
+      <div class="topic-tags"><span class="topic-tag">do/does</span><span class="topic-tag">don't/doesn't</span><span class="topic-tag">he/she/it + s</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-rose" onclick="showPage('presCont')">
+      <div class="topic-card-header"><div class="topic-icon">🔄</div><div><div class="topic-card-title">Present Continuous</div><div class="topic-card-sub">am / is / are + -ing</div></div></div>
+      <div class="topic-card-body"><p>Сегашно продължително — действия, случващи се сега.</p>
+      <div class="topic-tags"><span class="topic-tag">am/is/are</span><span class="topic-tag">verb + ing</span><span class="topic-tag">въпроси</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-indigo" onclick="showPage('irreg')">
+      <div class="topic-card-header"><div class="topic-icon">📖</div><div><div class="topic-card-title">Неправилни глаголи</div><div class="topic-card-sub">go→went, see→saw...</div></div></div>
+      <div class="topic-card-body"><p>Най-важните неправилни глаголи в минало просто.</p>
+      <div class="topic-tags"><span class="topic-tag">go/went</span><span class="topic-tag">see/saw</span><span class="topic-tag">have/had</span><span class="topic-tag">+10 глагола</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-amber" onclick="showPage('there')">
+      <div class="topic-card-header"><div class="topic-icon">🏠</div><div><div class="topic-card-title">There is / There are</div><div class="topic-card-sub">Описване на места</div></div></div>
+      <div class="topic-card-body"><p>Как да опишем какво има някъде — единствено и множествено.</p>
+      <div class="topic-tags"><span class="topic-tag">there is/there are</span><span class="topic-tag">отрицание</span><span class="topic-tag">въпроси</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-olive" onclick="showPage('can')">
+      <div class="topic-card-header"><div class="topic-icon">💪</div><div><div class="topic-card-title">Can / Can't</div><div class="topic-card-sub">Умения и разрешения</div></div></div>
+      <div class="topic-card-body"><p>Изразяване на умения, разрешения и забрани с can и can't.</p>
+      <div class="topic-tags"><span class="topic-tag">can / can't</span><span class="topic-tag">Can you...?</span><span class="topic-tag">Yes, I can.</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-cyan" onclick="showPage('prep')">
+      <div class="topic-card-header"><div class="topic-icon">📍</div><div><div class="topic-card-title">Prepositions</div><div class="topic-card-sub">in, on, at, under, next to...</div></div></div>
+      <div class="topic-card-body"><p>Предлози за място и време — къде се намират нещата.</p>
+      <div class="topic-tags"><span class="topic-tag">in / on / at</span><span class="topic-tag">under / next to</span><span class="topic-tag">behind / in front of</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-pink" onclick="showPage('wh1')">
+      <div class="topic-card-header"><div class="topic-icon">❓</div><div><div class="topic-card-title">WH- Questions I</div><div class="topic-card-sub">What, Where, When, Who, How, Why</div></div></div>
+      <div class="topic-card-body"><p>Основните въпросителни думи — значение и употреба в изречения.</p>
+      <div class="topic-tags"><span class="topic-tag">What</span><span class="topic-tag">Where</span><span class="topic-tag">When</span><span class="topic-tag">Who</span><span class="topic-tag">How</span><span class="topic-tag">Why</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-emerald" onclick="showPage('wh2')">
+      <div class="topic-card-header"><div class="topic-icon">🔍</div><div><div class="topic-card-title">WH- Questions II</div><div class="topic-card-sub">Which, Whose, How much/many/old/long</div></div></div>
+      <div class="topic-card-body"><p>Разширени въпросителни думи за по-точни въпроси.</p>
+      <div class="topic-tags"><span class="topic-tag">Which / Whose</span><span class="topic-tag">How much/many</span><span class="topic-tag">How old/long</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══════════ WAS / WERE PAGE ══════════ -->
+<div id="page-waswere" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-blue">
+    <h3>📖 Was / Were — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">I/He/She/It → WAS</div><div class="example">She was happy. It was cold.</div></div>
+      <div class="grammar-card"><div class="form">You/We/They → WERE</div><div class="example">They were at school.</div></div>
+      <div class="grammar-card"><div class="form">Отрицание → WASN'T/WEREN'T</div><div class="example">He wasn't late. We weren't home.</div></div>
+      <div class="grammar-card"><div class="form">Въпрос → WAS/WERE + S?</div><div class="example">Was she tired? Were you there?</div></div>
+      <div class="grammar-card"><div class="form">WH → WH + was/were + S?</div><div class="example">Where were you? Why was he late?</div></div>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">1</div>Попълни с was, were, wasn't или weren't</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-blue">was</span><span class="chip chip-blue">were</span><span class="chip chip-blue">wasn't</span><span class="chip chip-blue">weren't</span><span class="chip chip-blue">Was</span><span class="chip chip-blue">Were</span></div>
+      <div id="ww-ex"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('ww','ex')">✔ Провери</button><button class="btn-reset" onclick="rst('ww','ex')">↺ Изтрий</button></div>
+      <div class="score-box" id="ww-score-ex"></div>
+      <div class="pb-wrap" id="ww-pb-ex-w" style="display:none"><div class="pb" id="ww-pb-ex" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--purple)"><div class="icon">2</div>Кратки отговори — Yes / No</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-purple">Yes, I was.</span><span class="chip chip-purple">No, I wasn't.</span><span class="chip chip-purple">Yes, he was.</span><span class="chip chip-purple">No, she wasn't.</span><span class="chip chip-purple">Yes, they were.</span><span class="chip chip-purple">No, we weren't.</span></div>
+      <div id="ww-yn"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--purple)" onclick="chk('ww','yn')">✔ Провери</button><button class="btn-reset" onclick="rst('ww','yn')">↺ Изтрий</button></div>
+      <div class="score-box" id="ww-score-yn"></div>
+      <div class="pb-wrap" id="ww-pb-yn-w" style="display:none"><div class="pb" id="ww-pb-yn" style="background:linear-gradient(90deg,var(--purple),var(--dpurp))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">3</div>Диалог — попълни с правилната форма</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="ww_dlgDesc">Двама приятели разговарят за уикенда.</p>
+      <div class="dialog-box" id="ww-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('ww','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('ww','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="ww-score-dlg"></div>
+      <div class="pb-wrap" id="ww-pb-dlg-w" style="display:none"><div class="pb" id="ww-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ DID / DIDN'T PAGE ══════════ -->
+<div id="page-did" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-purple">
+    <h3>📖 Did / Didn't — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">Утвърдително → глагол+ed</div><div class="example">She played. They watched TV.</div></div>
+      <div class="grammar-card"><div class="form">Отрицание → didn't + глагол</div><div class="example">He didn't walk to school.</div></div>
+      <div class="grammar-card"><div class="form">Въпрос → Did + S + глагол?</div><div class="example">Did you listen to music?</div></div>
+      <div class="grammar-card"><div class="form">Кратък → Yes/No + did/didn't</div><div class="example">Did she cook? — Yes, she did.</div></div>
+      <div class="grammar-card"><div class="form">WH → WH + did + S + глагол?</div><div class="example">What did you watch?</div></div>
+    </div>
+    <div style="margin-top:12px"><div style="font-size:11.5px;font-weight:700;color:var(--dpurp);margin-bottom:7px;text-transform:uppercase;letter-spacing:.05em">🔤 Глаголи → минало</div>
+    <div class="verb-grid">
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">play</span><span class="verb-arrow">→</span><span class="verb-past">played</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">watch</span><span class="verb-arrow">→</span><span class="verb-past">watched</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">walk</span><span class="verb-arrow">→</span><span class="verb-past">walked</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">talk</span><span class="verb-arrow">→</span><span class="verb-past">talked</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">listen</span><span class="verb-arrow">→</span><span class="verb-past">listened</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">work</span><span class="verb-arrow">→</span><span class="verb-past">worked</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">visit</span><span class="verb-arrow">→</span><span class="verb-past">visited</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">clean</span><span class="verb-arrow">→</span><span class="verb-past">cleaned</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">cook</span><span class="verb-arrow">→</span><span class="verb-past">cooked</span></div>
+      <div class="verb-card purple"><span class="verb-base" style="color:var(--dpurp)">jump</span><span class="verb-arrow">→</span><span class="verb-past">jumped</span></div>
+    </div></div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-card">
+    <div class="section-header" style="background:var(--purple)"><div class="icon">1</div>Попълни с правилната -ed форма</div>
+    <div class="section-body">
+      <div class="word-bank" id="did-wb"></div>
+      <div id="did-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--purple)" onclick="chk('did','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('did','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="did-score-ex1"></div>
+      <div class="pb-wrap" id="did-pb-ex1-w" style="display:none"><div class="pb" id="did-pb-ex1" style="background:linear-gradient(90deg,var(--purple),var(--dpurp))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">2</div>Попълни с did, didn't или правилната форма</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-blue">did</span><span class="chip chip-blue">didn't</span><span class="chip chip-blue">Did</span><span class="chip chip-blue">+ основна форма</span></div>
+      <div id="did-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('did','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('did','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="did-score-ex2"></div>
+      <div class="pb-wrap" id="did-pb-ex2-w" style="display:none"><div class="pb" id="did-pb-ex2" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--amber)"><div class="icon">3</div>Кратки отговори Yes / No</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-amber">Yes, I did.</span><span class="chip chip-amber">No, I didn't.</span><span class="chip chip-amber">Yes, he did.</span><span class="chip chip-amber">No, she didn't.</span><span class="chip chip-amber">Yes, they did.</span></div>
+      <div id="did-yn"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--amber)" onclick="chk('did','yn')">✔ Провери</button><button class="btn-reset" onclick="rst('did','yn')">↺ Изтрий</button></div>
+      <div class="score-box" id="did-score-yn"></div>
+      <div class="pb-wrap" id="did-pb-yn-w" style="display:none"><div class="pb" id="did-pb-yn" style="background:linear-gradient(90deg,var(--amber),var(--damber))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">4</div>Диалог — попълни с правилната форма</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="did_dlgDesc">Двама приятели разговарят след уикенда.</p>
+      <div class="dialog-box" id="did-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('did','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('did','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="did-score-dlg"></div>
+      <div class="pb-wrap" id="did-pb-dlg-w" style="display:none"><div class="pb" id="did-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ PRESENT SIMPLE PAGE ══════════ -->
+<div id="page-presSimple" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-teal">
+    <h3>📖 Present Simple — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">I/You/We/They → глагол</div><div class="example">I play tennis. They eat pizza.</div></div>
+      <div class="grammar-card"><div class="form">He/She/It → глагол + s/es</div><div class="example">She plays. He watches TV.</div></div>
+      <div class="grammar-card"><div class="form">Отрицание → don't/doesn't + глагол</div><div class="example">I don't like fish. She doesn't eat meat.</div></div>
+      <div class="grammar-card"><div class="form">Въпрос → Do/Does + S + глагол?</div><div class="example">Do you like music? Does he play?</div></div>
+      <div class="grammar-card"><div class="form">WH → WH + do/does + S + глагол?</div><div class="example">What do you eat? Where does she live?</div></div>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-card">
+    <div class="section-header" style="background:var(--teal)"><div class="icon">1</div>Попълни с правилната форма на глагола</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="ps_desc1">Внимавай — за he/she/it глаголът получава <strong>-s</strong> или <strong>-es</strong>!</p>
+      <div id="ps-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--teal)" onclick="chk('ps','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('ps','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="ps-score-ex1"></div>
+      <div class="pb-wrap" id="ps-pb-ex1-w" style="display:none"><div class="pb" id="ps-pb-ex1" style="background:linear-gradient(90deg,var(--teal),var(--dteal))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">2</div>Отрицание и въпроси — do, does, don't, doesn't</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-teal">do</span><span class="chip chip-teal">does</span><span class="chip chip-teal">don't</span><span class="chip chip-teal">doesn't</span><span class="chip chip-teal">Do</span><span class="chip chip-teal">Does</span></div>
+      <div id="ps-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('ps','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('ps','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="ps-score-ex2"></div>
+      <div class="pb-wrap" id="ps-pb-ex2-w" style="display:none"><div class="pb" id="ps-pb-ex2" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">3</div>Диалог — попълни с правилната форма</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="pc_desc1">Двама приятели говорят за навиците си.</p>
+      <div class="dialog-box" id="ps-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('ps','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('ps','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="ps-score-dlg"></div>
+      <div class="pb-wrap" id="ps-pb-dlg-w" style="display:none"><div class="pb" id="ps-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ PRESENT CONTINUOUS PAGE ══════════ -->
+<div id="page-presCont" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-rose">
+    <h3>📖 Present Continuous — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">am/is/are + глагол+ing</div><div class="example">I am reading. She is playing.</div></div>
+      <div class="grammar-card"><div class="form">I → am | He/She/It → is | You/We/They → are</div><div class="example">They are watching TV.</div></div>
+      <div class="grammar-card"><div class="form">Отрицание → am/is/are + not + ing</div><div class="example">He isn't sleeping. We aren't eating.</div></div>
+      <div class="grammar-card"><div class="form">Въпрос → Am/Is/Are + S + ing?</div><div class="example">Is she dancing? Are you listening?</div></div>
+      <div class="grammar-card"><div class="form">-ing правила: drop e → take+ing; double → run+ning</div><div class="example">make→making, sit→sitting</div></div>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-card">
+    <div class="section-header" style="background:var(--rose)"><div class="icon">1</div>Попълни с am, is или are + глагол+ing</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-rose">am</span><span class="chip chip-rose">is</span><span class="chip chip-rose">are</span><span class="chip chip-rose">+ verb+ing</span></div>
+      <div id="pc-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--rose)" onclick="chk('pc','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('pc','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="pc-score-ex1"></div>
+      <div class="pb-wrap" id="pc-pb-ex1-w" style="display:none"><div class="pb" id="pc-pb-ex1" style="background:linear-gradient(90deg,var(--rose),var(--drose))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">2</div>Отрицание и въпроси</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-rose">isn't</span><span class="chip chip-rose">aren't</span><span class="chip chip-rose">Is</span><span class="chip chip-rose">Are</span><span class="chip chip-rose">Am</span></div>
+      <div id="pc-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('pc','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('pc','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="pc-score-ex2"></div>
+      <div class="pb-wrap" id="pc-pb-ex2-w" style="display:none"><div class="pb" id="pc-pb-ex2" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">3</div>Диалог — какво правят сега?</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="pc_dlgDesc">Майка се обажда на детето си — какво прави то в момента?</p>
+      <div class="dialog-box" id="pc-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('pc','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('pc','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="pc-score-dlg"></div>
+      <div class="pb-wrap" id="pc-pb-dlg-w" style="display:none"><div class="pb" id="pc-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ IRREGULAR VERBS PAGE ══════════ -->
+<div id="page-irreg" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-indigo">
+    <h3>📖 Неправилни глаголи — Base Form → Past Simple</h3>
+    <div class="verb-grid">
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">go</span><span class="verb-arrow">→</span><span class="verb-past">went</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">see</span><span class="verb-arrow">→</span><span class="verb-past">saw</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">have</span><span class="verb-arrow">→</span><span class="verb-past">had</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">do</span><span class="verb-arrow">→</span><span class="verb-past">did</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">eat</span><span class="verb-arrow">→</span><span class="verb-past">ate</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">come</span><span class="verb-arrow">→</span><span class="verb-past">came</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">take</span><span class="verb-arrow">→</span><span class="verb-past">took</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">make</span><span class="verb-arrow">→</span><span class="verb-past">made</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">get</span><span class="verb-arrow">→</span><span class="verb-past">got</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">buy</span><span class="verb-arrow">→</span><span class="verb-past">bought</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">give</span><span class="verb-arrow">→</span><span class="verb-past">gave</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">run</span><span class="verb-arrow">→</span><span class="verb-past">ran</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">fly</span><span class="verb-arrow">→</span><span class="verb-past">flew</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">sit</span><span class="verb-arrow">→</span><span class="verb-past">sat</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">drive</span><span class="verb-arrow">→</span><span class="verb-past">drove</span></div>
+      <div class="verb-card" style="background:#eef2ff;border-color:#a5b4fc"><span class="verb-base" style="color:var(--dindigo)">sleep</span><span class="verb-arrow">→</span><span class="verb-past">slept</span></div>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-card">
+    <div class="section-header" style="background:var(--indigo)"><div class="icon">1</div>Попълни с миналото време на глагола в скобите</div>
+    <div class="section-body">
+      <div id="ir-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--indigo)" onclick="chk('ir','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('ir','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="ir-score-ex1"></div>
+      <div class="pb-wrap" id="ir-pb-ex1-w" style="display:none"><div class="pb" id="ir-pb-ex1" style="background:linear-gradient(90deg,var(--indigo),var(--dindigo))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">2</div>Попълни с правилна форма — въпроси и отрицания</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-indigo">did</span><span class="chip chip-indigo">didn't</span><span class="chip chip-indigo">Did</span><span class="chip chip-indigo">+ основна форма</span></div>
+      <div id="ir-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('ir','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('ir','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="ir-score-ex2"></div>
+      <div class="pb-wrap" id="ir-pb-ex2-w" style="display:none"><div class="pb" id="ir-pb-ex2" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">3</div>Диалог — попълни с неправилните глаголи</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="ir_dlgDesc">Разговор за изминалото лято.</p>
+      <div class="dialog-box" id="ir-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('ir','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('ir','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="ir-score-dlg"></div>
+      <div class="pb-wrap" id="ir-pb-dlg-w" style="display:none"><div class="pb" id="ir-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ THERE IS / THERE ARE PAGE ══════════ -->
+<div id="page-there" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-amber">
+    <h3>📖 There is / There are — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">Единствено → There is (There's)</div><div class="example">There is a cat in the garden.</div></div>
+      <div class="grammar-card"><div class="form">Множествено → There are</div><div class="example">There are two books on the desk.</div></div>
+      <div class="grammar-card"><div class="form">Отрицание → There isn't / There aren't</div><div class="example">There isn't a park. There aren't any shops.</div></div>
+      <div class="grammar-card"><div class="form">Въпрос → Is there / Are there?</div><div class="example">Is there a bus stop? Are there any students?</div></div>
+      <div class="grammar-card"><div class="form">Кратък → Yes, there is/are. No, there isn't/aren't.</div><div class="example">Is there a pool? — Yes, there is.</div></div>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-card">
+    <div class="section-header" style="background:var(--amber)"><div class="icon">1</div>Попълни с there is, there are, there isn't или there aren't</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-amber">There is</span><span class="chip chip-amber">There are</span><span class="chip chip-amber">There isn't</span><span class="chip chip-amber">There aren't</span><span class="chip chip-amber">Is there</span><span class="chip chip-amber">Are there</span></div>
+      <div id="th-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--amber)" onclick="chk('th','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('th','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="th-score-ex1"></div>
+      <div class="pb-wrap" id="th-pb-ex1-w" style="display:none"><div class="pb" id="th-pb-ex1" style="background:linear-gradient(90deg,var(--amber),var(--damber))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">2</div>Въпроси и кратки отговори</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-amber">Is there</span><span class="chip chip-amber">Are there</span><span class="chip chip-amber">Yes, there is.</span><span class="chip chip-amber">No, there isn't.</span><span class="chip chip-amber">Yes, there are.</span><span class="chip chip-amber">No, there aren't.</span></div>
+      <div id="th-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('th','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('th','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="th-score-ex2"></div>
+      <div class="pb-wrap" id="th-pb-ex2-w" style="display:none"><div class="pb" id="th-pb-ex2" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">3</div>Диалог — описваме ново жилище</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="th_dlgDesc">Приятел разпитва за новото жилище.</p>
+      <div class="dialog-box" id="th-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('th','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('th','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="th-score-dlg"></div>
+      <div class="pb-wrap" id="th-pb-dlg-w" style="display:none"><div class="pb" id="th-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ CAN / CAN'T PAGE ══════════ -->
+<div id="page-can" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-olive">
+    <h3>📖 Can / Can't — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">Умение → can + глагол</div><div class="example">I can swim. She can play guitar.</div></div>
+      <div class="grammar-card"><div class="form">Неумение → can't + глагол</div><div class="example">He can't drive. They can't fly.</div></div>
+      <div class="grammar-card"><div class="form">Въпрос → Can + S + глагол?</div><div class="example">Can you cook? Can she dance?</div></div>
+      <div class="grammar-card"><div class="form">Кратък отговор → Yes/No, S + can/can't</div><div class="example">Can you swim? — Yes, I can.</div></div>
+      <div class="grammar-card"><div class="form">Разрешение → Can I...? / You can / You can't</div><div class="example">Can I go out? — Yes, you can.</div></div>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-card">
+    <div class="section-header" style="background:var(--olive)"><div class="icon">1</div>Попълни с can или can't</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-olive">can</span><span class="chip chip-olive">can't</span></div>
+      <div id="can-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--olive)" onclick="chk('can','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('can','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="can-score-ex1"></div>
+      <div class="pb-wrap" id="can-pb-ex1-w" style="display:none"><div class="pb" id="can-pb-ex1" style="background:linear-gradient(90deg,var(--olive),var(--dolive))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">2</div>Въпроси и кратки отговори с Can</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-olive">Can</span><span class="chip chip-olive">can</span><span class="chip chip-olive">can't</span><span class="chip chip-olive">Yes, I can.</span><span class="chip chip-olive">No, I can't.</span><span class="chip chip-olive">Yes, she can.</span><span class="chip chip-olive">No, he can't.</span></div>
+      <div id="can-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('can','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('can','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="can-score-ex2"></div>
+      <div class="pb-wrap" id="can-pb-ex2-w" style="display:none"><div class="pb" id="can-pb-ex2" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">3</div>Диалог — какво умееш да правиш?</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="can_desc3">Двама приятели разговарят за уменията си.</p>
+      <div class="dialog-box" id="can-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('can','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('can','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="can-score-dlg"></div>
+      <div class="pb-wrap" id="can-pb-dlg-w" style="display:none"><div class="pb" id="can-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ PREPOSITIONS PAGE ══════════ -->
+<div id="page-prep" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-cyan">
+    <h3>📖 Prepositions of Place — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">in — вътре в нещо</div><div class="example">The cat is in the box. He's in the garden.</div></div>
+      <div class="grammar-card"><div class="form">on — върху нещо</div><div class="example">The book is on the table. She sat on the chair.</div></div>
+      <div class="grammar-card"><div class="form">at — на определено място</div><div class="example">I'm at school. She's at home. at the bus stop.</div></div>
+      <div class="grammar-card"><div class="form">under — под нещо</div><div class="example">The dog is under the bed.</div></div>
+      <div class="grammar-card"><div class="form">next to — до / редом до</div><div class="example">The shop is next to the park.</div></div>
+      <div class="grammar-card"><div class="form">behind — зад / in front of — пред</div><div class="example">The tree is behind the house.</div></div>
+      <div class="grammar-card"><div class="form">between — между</div><div class="example">She sat between Tom and Anna.</div></div>
+      <div class="grammar-card"><div class="form">opposite — срещу</div><div class="example">The bank is opposite the library.</div></div>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-card">
+    <div class="section-header" style="background:var(--cyan)"><div class="icon">1</div>Попълни с правилния предлог</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-cyan">in</span><span class="chip chip-cyan">on</span><span class="chip chip-cyan">at</span><span class="chip chip-cyan">under</span><span class="chip chip-cyan">next to</span><span class="chip chip-cyan">behind</span><span class="chip chip-cyan">in front of</span><span class="chip chip-cyan">between</span><span class="chip chip-cyan">opposite</span></div>
+      <div id="prep-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--cyan)" onclick="chk('prep','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('prep','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="prep-score-ex1"></div>
+      <div class="pb-wrap" id="prep-pb-ex1-w" style="display:none"><div class="pb" id="prep-pb-ex1" style="background:linear-gradient(90deg,var(--cyan),var(--dcyan))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">2</div>Предлози за време — in, on, at</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px"><strong>in</strong> — месец, година, сезон &nbsp;|&nbsp; <strong>on</strong> — ден, дата &nbsp;|&nbsp; <strong>at</strong> — час, празник</p>
+      <div class="word-bank"><span class="chip chip-cyan">in</span><span class="chip chip-cyan">on</span><span class="chip chip-cyan">at</span></div>
+      <div id="prep-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('prep','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('prep','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="prep-score-ex2"></div>
+      <div class="pb-wrap" id="prep-pb-ex2-w" style="display:none"><div class="pb" id="prep-pb-ex2" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">3</div>Диалог — описваме стаята</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px" data-desc="prep_desc3">Приятел те пита за стаята ти — опиши накратко.</p>
+      <div class="dialog-box" id="prep-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('prep','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('prep','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="prep-score-dlg"></div>
+      <div class="pb-wrap" id="prep-pb-dlg-w" style="display:none"><div class="pb" id="prep-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ WH- QUESTIONS I PAGE ══════════ -->
+<div id="page-wh1" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-pink">
+    <h3>❓ WH- Questions I — What, Where, When, Who, How, Why</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">What — Какво / Какъв</div><div class="example">What is your name? What do you eat?</div></div>
+      <div class="grammar-card"><div class="form">Where — Къде</div><div class="example">Where do you live? Where is the school?</div></div>
+      <div class="grammar-card"><div class="form">When — Кога</div><div class="example">When is your birthday? When does school start?</div></div>
+      <div class="grammar-card"><div class="form">Who — Кой / Кого</div><div class="example">Who is your teacher? Who did you see?</div></div>
+      <div class="grammar-card"><div class="form">How — Как</div><div class="example">How are you? How do you go to school?</div></div>
+      <div class="grammar-card"><div class="form">Why — Защо</div><div class="example">Why are you late? Why did she cry?</div></div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:#fce7f3;border-radius:8px;font-size:13px">
+      <span style="font-weight:700;color:var(--dpink)">📌 Структура: </span>
+      <span style="color:#444">WH- + auxiliary (do/does/did/is/are/was/were) + subject + verb?</span>
+      <br><span style="color:#888;font-style:italic;font-size:12px">What do you eat? / Where did she go? / When is the party?</span>
+    </div>
+  </div>
+</div>
+<div class="main">
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--pink)"><div class="icon">1</div>Избери правилната въпросителна дума — Present Simple</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Всички изречения са в <strong>сегашно просто</strong> време.</p>
+      <div class="word-bank"><span class="chip chip-pink">What</span><span class="chip chip-pink">Where</span><span class="chip chip-pink">When</span><span class="chip chip-pink">Who</span><span class="chip chip-pink">How</span><span class="chip chip-pink">Why</span></div>
+      <div id="wh1-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--pink)" onclick="chk('wh1','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('wh1','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="wh1-score-ex1"></div>
+      <div class="pb-wrap" id="wh1-pb-ex1-w" style="display:none"><div class="pb" id="wh1-pb-ex1" style="background:linear-gradient(90deg,var(--pink),var(--dpink))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--indigo)"><div class="icon">2</div>Избери правилната въпросителна дума — Past Simple</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Всички изречения са в <strong>минало просто</strong> време (was/were/did).</p>
+      <div class="word-bank"><span class="chip chip-pink">What</span><span class="chip chip-pink">Where</span><span class="chip chip-pink">When</span><span class="chip chip-pink">Who</span><span class="chip chip-pink">How</span><span class="chip chip-pink">Why</span></div>
+      <div id="wh1-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--indigo)" onclick="chk('wh1','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('wh1','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="wh1-score-ex2"></div>
+      <div class="pb-wrap" id="wh1-pb-ex2-w" style="display:none"><div class="pb" id="wh1-pb-ex2" style="background:linear-gradient(90deg,var(--indigo),var(--dindigo))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">3</div>Напиши въпроса — подредени думи</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Дадени са думите в скобки — напиши правилния въпрос в празното място.</p>
+      <div id="wh1-ex3"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('wh1','ex3')">✔ Провери</button><button class="btn-reset" onclick="rst('wh1','ex3')">↺ Изтрий</button></div>
+      <div class="score-box" id="wh1-score-ex3"></div>
+      <div class="pb-wrap" id="wh1-pb-ex3-w" style="display:none"><div class="pb" id="wh1-pb-ex3" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">4</div>Диалог — попълни с правилната въпросителна дума</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Два приятели се запознават за пръв път.</p>
+      <div class="dialog-box" id="wh1-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('wh1','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('wh1','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="wh1-score-dlg"></div>
+      <div class="pb-wrap" id="wh1-pb-dlg-w" style="display:none"><div class="pb" id="wh1-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ WH- QUESTIONS II PAGE ══════════ -->
+<div id="page-wh2" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-emerald">
+    <h3>🔍 WH- Questions II — Which, Whose, How much/many/old/long</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">Which — Кой / Кое (от дадени)</div><div class="example">Which colour do you like — red or blue?</div></div>
+      <div class="grammar-card"><div class="form">Whose — Чий / Чия / Чие</div><div class="example">Whose bag is this? Whose turn is it?</div></div>
+      <div class="grammar-card"><div class="form">How much — Колко (неброимо)</div><div class="example">How much water do you drink?</div></div>
+      <div class="grammar-card"><div class="form">How many — Колко (броимо)</div><div class="example">How many students are in your class?</div></div>
+      <div class="grammar-card"><div class="form">How old — На колко години</div><div class="example">How old are you? How old is your brother?</div></div>
+      <div class="grammar-card"><div class="form">How long — Колко дълго / Колко дълъг</div><div class="example">How long is the film? How long did you wait?</div></div>
+    </div>
+  </div>
+</div>
+<div class="main">
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--emerald)"><div class="icon">1</div>Избери правилната въпросителна дума — Present Simple</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Всички изречения са в <strong>сегашно просто</strong> време.</p>
+      <div class="word-bank"><span class="chip chip-emerald">Which</span><span class="chip chip-emerald">Whose</span><span class="chip chip-emerald">How much</span><span class="chip chip-emerald">How many</span><span class="chip chip-emerald">How old</span><span class="chip chip-emerald">How long</span></div>
+      <div id="wh2-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--emerald)" onclick="chk('wh2','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('wh2','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="wh2-score-ex1"></div>
+      <div class="pb-wrap" id="wh2-pb-ex1-w" style="display:none"><div class="pb" id="wh2-pb-ex1" style="background:linear-gradient(90deg,var(--emerald),var(--demerald))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--indigo)"><div class="icon">2</div>Избери правилната въпросителна дума — Past Simple</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Всички изречения са в <strong>минало просто</strong> време.</p>
+      <div class="word-bank"><span class="chip chip-emerald">Which</span><span class="chip chip-emerald">Whose</span><span class="chip chip-emerald">How much</span><span class="chip chip-emerald">How many</span><span class="chip chip-emerald">How old</span><span class="chip chip-emerald">How long</span></div>
+      <div id="wh2-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--indigo)" onclick="chk('wh2','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('wh2','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="wh2-score-ex2"></div>
+      <div class="pb-wrap" id="wh2-pb-ex2-w" style="display:none"><div class="pb" id="wh2-pb-ex2" style="background:linear-gradient(90deg,var(--indigo),var(--dindigo))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">3</div>Диалог — попълни с правилната въпросителна дума</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Учителката задава въпроси на нов ученик в класа.</p>
+      <div class="dialog-box" id="wh2-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('wh2','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('wh2','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="wh2-score-dlg"></div>
+      <div class="pb-wrap" id="wh2-pb-dlg-w" style="display:none"><div class="pb" id="wh2-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- NOTIFICATION MODAL -->
+<div class="modal-overlay" id="notif-modal">
+  <div class="modal-box">
+    <div class="modal-icon">🎉</div>
+    <div class="modal-title" id="modal-title">Браво! Темата е завършена!</div>
+    <div class="modal-sub" id="modal-sub">Искаш ли да изпратиш съобщение до учителя, че си попълнил правилно всички упражнения по тази тема?</div>
+    <input class="modal-input" id="modal-name" type="text" placeholder="Въведи твоето име..." autocomplete="off">
+    <div class="modal-btns">
+      <button class="modal-btn-yes" id="modal-yes" onclick="sendNotification()">✉️ Да, изпрати!</button>
+      <button class="modal-btn-no" onclick="closeModal()">Не сега</button>
+    </div>
+    <div class="modal-status" id="modal-status"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>Английски език — 5 клас &nbsp;|&nbsp; ОУ "Димитър Благоев", гр. Велико Търново</div>
+  <span>Автор: Панайот Кулчев / Panayot Kulchev</span>
+  <div style="margin-top:10px">
+    <button onclick="testFillAll()" style="background:rgba(255,255,255,.1);border:1px dashed rgba(255,255,255,.3);color:rgba(255,255,255,.4);border-radius:6px;padding:4px 12px;font-size:11px;cursor:pointer;font-family:inherit" title="Само за тестване">🔧 Test режим</button>
+  </div>
+</footer>
+
+<script>
+// ── Navigation ─────────────────────────────────────────────────────────────
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Generic builders ───────────────────────────────────────────────────────
+function buildEx(data,group,id){
+  const c=document.getElementById(id);
+  data.forEach((item,i)=>{
+    const d=document.createElement('div'); d.className='exercise-item';
+    let h=`<span class="num">${i+1}.</span><span style="flex:1">`;
+    item.text.forEach((p,j)=>{
+      h+=p;
+      if(j<item.text.length-1) h+=`<input class="blank" data-group="${group}" data-idx="${i}" data-sub="${j}" type="text" autocomplete="off" spellcheck="false">`;
+    });
+    h+=`<span class="hint-text" id="hint-${group}-${i}"></span></span>`;
+    d.innerHTML=h; c.appendChild(d);
+  });
+}
+
+function buildDlg(data,group,id,spClass){
+  const c=document.getElementById(id);
+  data.forEach((line,i)=>{
+    const d=document.createElement('div'); d.className='dialog-line';
+    let h=`<span class="speaker ${spClass(line.speaker)}">${line.speaker}:</span><span style="flex:1">`;
+    line.text.forEach((p,j)=>{
+      h+=p;
+      if(j<line.text.length-1) h+=`<input class="blank" data-group="${group}" data-idx="${i}" data-sub="${j}" type="text" autocomplete="off" spellcheck="false">`;
+    });
+    h+=`<span class="hint-text" id="hint-${group}-${i}"></span></span>`;
+    d.innerHTML=h; c.appendChild(d);
+  });
+}
+
+function buildYN(data,group,id,hc){
+  const c=document.getElementById(id);
+  data.forEach((item,i)=>{
+    const d=document.createElement('div'); d.className='exercise-item';
+    d.style.cssText='flex-direction:column;align-items:flex-start';
+    d.innerHTML=`<div style="display:flex;gap:10px;align-items:center;width:100%">
+      <span class="num">${i+1}.</span>
+      <span style="font-size:14px">${item.question}</span>
+      <span style="font-size:12px;color:${hc};font-style:italic">${item.hint}</span></div>
+      <div style="display:flex;gap:7px;align-items:center;margin-top:5px;margin-left:32px">
+      <span style="font-size:12.5px;color:#888" data-i18n="answerLabel">${LANGS[currentLang].answerLabel}</span>
+      <input class="blank" data-group="${group}" data-idx="${i}" data-sub="0" type="text" autocomplete="off" spellcheck="false" style="width:195px">
+      <span class="hint-text" id="hint-${group}-${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+
+// ── Check / Reset ──────────────────────────────────────────────────────────
+function chk(prefix,section){
+  const group=prefix+'-'+section;
+  const data=DATA[prefix][section];
+  let ok=0,tot=0;
+  data.forEach((item,i)=>{
+    const inps=document.querySelectorAll(`input[data-group="${group}"][data-idx="${i}"]`);
+    const ans=item.answer;
+    const hints=Array.isArray(item.hint)?item.hint:[item.hint];
+    let all=true;
+    inps.forEach((inp,j)=>{
+      tot++;
+      if(inp.value.trim().toLowerCase()===ans[j].toLowerCase()){inp.classList.remove('wrong');inp.classList.add('correct');ok++;}
+      else{inp.classList.remove('correct');inp.classList.add('wrong');all=false;}
+    });
+    const h=document.getElementById(`hint-${group}-${i}`);
+    if(h){h.textContent=all?'':' ✗ ('+hints.join(' / ')+')';h.style.display=all?'none':'inline';}
+  });
+  const pct=Math.round(ok/tot*100);
+  const T=LANGS[currentLang];
+  const box=document.getElementById(`${prefix}-score-${section}`);
+  box.className='score-box show '+(pct===100?'good':pct>=70?'ok':'bad');
+  const emoji = pct===100?T.scoreGood:pct>=70?T.scoreOk:T.scoreBad;
+  box.textContent=`${T.scoreText}: ${ok}/${tot} (${pct}%) — ${emoji}`;
+  const pbW=document.getElementById(`${prefix}-pb-${section}-w`);
+  const pb=document.getElementById(`${prefix}-pb-${section}`);
+  if(pbW&&pb){pbW.style.display='block';setTimeout(()=>{pb.style.width=pct+'%';},50);}
+  // Check if the whole topic is now 100% complete
+  if(pct===100) setTimeout(()=>checkTopicComplete(prefix), 600);
+}
+
+function rst(prefix,section){
+  const group=prefix+'-'+section;
+  document.querySelectorAll(`input[data-group="${group}"]`).forEach(i=>{i.value='';i.classList.remove('correct','wrong');});
+  document.querySelectorAll(`[id^="hint-${group}-"]`).forEach(h=>h.style.display='none');
+  const box=document.getElementById(`${prefix}-score-${section}`);
+  if(box)box.classList.remove('show');
+  const pb=document.getElementById(`${prefix}-pb-${section}`);
+  const pbW=document.getElementById(`${prefix}-pb-${section}-w`);
+  if(pb)pb.style.width='0%'; if(pbW)pbW.style.display='none';
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════════════════════════════════
+const DATA={
+
+// ── WAS / WERE ─────────────────────────────────────────────────────────────
+ww:{
+  ex:[
+    {text:["I "," happy yesterday."],answer:["was"],hint:["I → was"]},
+    {text:["She "," at school on Monday."],answer:["was"],hint:["She → was"]},
+    {text:["They "," at the park last Saturday."],answer:["were"],hint:["They → were"]},
+    {text:["He "," tired after football."],answer:["was"],hint:["He → was"]},
+    {text:["We "," in London two years ago."],answer:["were"],hint:["We → were"]},
+    {text:["The film "," very funny!"],answer:["was"],hint:["The film → was"]},
+    {text:["My friends "," at the party."],answer:["were"],hint:["My friends → were"]},
+    {text:["It "," cold and rainy last night."],answer:["was"],hint:["It → was"]},
+    {text:["The books "," on the table."],answer:["were"],hint:["The books → were"]},
+    {text:["Tom "," born in 2012."],answer:["was"],hint:["Tom → was"]},
+    {text:["I "," at home. I was at my grandma's house."],answer:["wasn't"],hint:["отрицание → wasn't"]},
+    {text:["The children "," quiet. They were very noisy!"],answer:["weren't"],hint:["отрицание → weren't"]},
+    {text:["She "," sad — she was very excited."],answer:["wasn't"],hint:["отрицание → wasn't"]},
+    {text:["We "," late. We arrived on time."],answer:["weren't"],hint:["отрицание → weren't"]},
+    {text:[""," you at the cinema last night?"],answer:["Were"],hint:["You → Were (въпрос)"]},
+    {text:[""," she your teacher last year?"],answer:["Was"],hint:["She → Was (въпрос)"]},
+    {text:[""," they happy about the trip?"],answer:["Were"],hint:["They → Were (въпрос)"]},
+    {text:["Where "," you yesterday afternoon?"],answer:["were"],hint:["WH → were"]},
+    {text:["What time "," the party?"],answer:["was"],hint:["WH → was"]},
+    {text:["Why "," he late for school?"],answer:["was"],hint:["WH → was"]},
+  ],
+  yn:[
+    {question:"Was Tom at school yesterday?",hint:"(✓ Yes)",answer:["Yes, he was."]},
+    {question:"Were you and your friend at the park?",hint:"(✗ No)",answer:["No, we weren't."]},
+    {question:"Was the film good?",hint:"(✓ Yes)",answer:["Yes, it was."]},
+    {question:"Were the children quiet?",hint:"(✗ No)",answer:["No, they weren't."]},
+    {question:"Was she happy?",hint:"(✗ No)",answer:["No, she wasn't."]},
+  ],
+  dlg:[
+    {speaker:"A",text:["Hi! How "," your weekend?"],answer:["was"],hint:["→ was"]},
+    {speaker:"B",text:["It "," great! I "," at the beach."],answer:["was","was"],hint:["→ was","→ was"]},
+    {speaker:"A",text:[""," the weather nice?"],answer:["Was"],hint:["→ Was"]},
+    {speaker:"B",text:["Yes, it "," sunny. But the waves "," big!"],answer:["was","were"],hint:["→ was","→ were"]},
+    {speaker:"A",text:[""," your friends there too?"],answer:["Were"],hint:["→ Were"]},
+    {speaker:"B",text:["No, they "," there. It "," just my family."],answer:["weren't","was"],hint:["→ weren't","→ was"]},
+    {speaker:"A",text:["Where "," you on Friday evening?"],answer:["were"],hint:["→ were"]},
+    {speaker:"B",text:["I "," at home. I "," feeling very well."],answer:["was","wasn't"],hint:["→ was","→ wasn't"]},
+    {speaker:"A",text:["Oh no! Why "," you ill?"],answer:["were"],hint:["→ were"]},
+    {speaker:"B",text:["I don't know! How "," your weekend?"],answer:["was"],hint:["→ was"]},
+  ]
+},
+
+// ── DID / DIDN'T ───────────────────────────────────────────────────────────
+did:{
+  ex1:[
+    {text:["She "," football with her friends yesterday."],answer:["played"],hint:["play → played"]},
+    {text:["They "," TV all evening."],answer:["watched"],hint:["watch → watched"]},
+    {text:["We "," to school because it was sunny."],answer:["walked"],hint:["walk → walked"]},
+    {text:["He "," to his teacher after class."],answer:["talked"],hint:["talk → talked"]},
+    {text:["I "," to music on my way home."],answer:["listened"],hint:["listen → listened"]},
+    {text:["My mum "," in the garden all afternoon."],answer:["worked"],hint:["work → worked"]},
+    {text:["We "," our grandparents last Sunday."],answer:["visited"],hint:["visit → visited"]},
+    {text:["Tom "," his room on Saturday morning."],answer:["cleaned"],hint:["clean → cleaned"]},
+    {text:["Dad "," a delicious soup for dinner."],answer:["cooked"],hint:["cook → cooked"]},
+    {text:["The children "," over the puddles in the park."],answer:["jumped"],hint:["jump → jumped"]},
+    {text:["She "," the guitar at the school concert."],answer:["played"],hint:["play → played"]},
+    {text:["They "," a documentary about animals last night."],answer:["watched"],hint:["watch → watched"]},
+    {text:["My dad "," to the office yesterday."],answer:["walked"],hint:["walk → walked"]},
+    {text:["We "," about our summer holidays."],answer:["talked"],hint:["talk → talked"]},
+    {text:["She "," carefully to the instructions."],answer:["listened"],hint:["listen → listened"]},
+    {text:["He "," very hard for the test."],answer:["worked"],hint:["work → worked"]},
+    {text:["They "," a museum in the city centre."],answer:["visited"],hint:["visit → visited"]},
+    {text:["I "," my bike after school."],answer:["cleaned"],hint:["clean → cleaned"]},
+    {text:["Mum "," pancakes for breakfast."],answer:["cooked"],hint:["cook → cooked"]},
+    {text:["He "," as high as he could."],answer:["jumped"],hint:["jump → jumped"]},
+  ],
+  ex2:[
+    {text:["She "," play football. She stayed at home."],answer:["didn't"],hint:["→ didn't"]},
+    {text:[""," you watch TV last night? — Yes, I did."],answer:["Did"],hint:["→ Did"]},
+    {text:["They "," walk to school. They went by bus."],answer:["didn't"],hint:["→ didn't"]},
+    {text:[""," he talk to his teacher? — No, he didn't."],answer:["Did"],hint:["→ Did"]},
+    {text:["I "," listen to music. I read a book instead."],answer:["didn't"],hint:["→ didn't"]},
+    {text:["What "," you cook for dinner?"],answer:["did"],hint:["→ did"]},
+    {text:["She "," clean her room. It was very messy!"],answer:["didn't"],hint:["→ didn't"]},
+    {text:["Where "," they visit on holiday?"],answer:["did"],hint:["→ did"]},
+    {text:["He "," jump over the fence. He was too tired."],answer:["didn't"],hint:["→ didn't"]},
+    {text:["Why "," she work so late?"],answer:["did"],hint:["→ did"]},
+  ],
+  yn:[
+    {question:"Did she play tennis yesterday?",hint:"(✓ Yes)",answer:["Yes, she did."]},
+    {question:"Did they watch a film last night?",hint:"(✗ No)",answer:["No, they didn't."]},
+    {question:"Did you cook dinner?",hint:"(✓ Yes)",answer:["Yes, I did."]},
+    {question:"Did he walk to school?",hint:"(✗ No)",answer:["No, he didn't."]},
+    {question:"Did they visit their grandparents?",hint:"(✓ Yes)",answer:["Yes, they did."]},
+  ],
+  dlg:[
+    {speaker:"A",text:["Hi! "," you have a good weekend?"],answer:["Did"],hint:["→ Did"]},
+    {speaker:"B",text:["Yes! I "," football on Saturday with my friends."],answer:["played"],hint:["play → played"]},
+    {speaker:"A",text:["Cool! "," you win?"],answer:["Did"],hint:["→ Did"]},
+    {speaker:"B",text:["Yes, we ","! And then we "," pizza at home."],answer:["did","cooked"],hint:["→ did","cook → cooked"]},
+    {speaker:"A",text:[""," your mum cook it?"],answer:["Did"],hint:["→ Did"]},
+    {speaker:"B",text:["No, she ",". My dad "," it. He's a great cook!"],answer:["didn't","cooked"],hint:["→ didn't","cook → cooked"]},
+    {speaker:"A",text:["What about Sunday? "," you go out?"],answer:["Did"],hint:["→ Did"]},
+    {speaker:"B",text:["No, I ",". I "," my room and "," to music all day."],answer:["didn't","cleaned","listened"],hint:["→ didn't","clean → cleaned","listen → listened"]},
+    {speaker:"A",text:["I "," my grandparents. We "," in the park."],answer:["visited","walked"],hint:["visit → visited","walk → walked"]},
+    {speaker:"B",text:["That sounds fun! We should "," together next weekend!"],answer:["walk"],hint:["→ walk (основна форма)"]},
+  ]
+},
+
+// ── PRESENT SIMPLE ─────────────────────────────────────────────────────────
+ps:{
+  ex1:[
+    {text:["She "," (play) tennis every Saturday."],answer:["plays"],hint:["she → plays"]},
+    {text:["They "," (eat) lunch at school."],answer:["eat"],hint:["they → eat"]},
+    {text:["He "," (watch) TV after dinner."],answer:["watches"],hint:["he → watches (-es)"]},
+    {text:["I "," (like) chocolate ice cream."],answer:["like"],hint:["I → like"]},
+    {text:["My sister "," (study) English every day."],answer:["studies"],hint:["she → studies (y→ies)"]},
+    {text:["We "," (go) to school by bus."],answer:["go"],hint:["we → go"]},
+    {text:["The dog "," (sleep) on the sofa."],answer:["sleeps"],hint:["it → sleeps"]},
+    {text:["You "," (speak) English very well!"],answer:["speak"],hint:["you → speak"]},
+    {text:["Tom "," (do) his homework every evening."],answer:["does"],hint:["he → does"]},
+    {text:["The birds "," (sing) in the morning."],answer:["sing"],hint:["they → sing"]},
+    {text:["My mum "," (cook) dinner at 6 o'clock."],answer:["cooks"],hint:["she → cooks"]},
+    {text:["We "," (live) in Veliko Tarnovo."],answer:["live"],hint:["we → live"]},
+  ],
+  ex2:[
+    {text:["She "," like cats. She prefers dogs."],answer:["doesn't"],hint:["she → doesn't"]},
+    {text:[""," you speak French? — No, I don't."],answer:["Do"],hint:["→ Do (въпрос)"]},
+    {text:["He "," eat meat. He's vegetarian."],answer:["doesn't"],hint:["he → doesn't"]},
+    {text:[""," they live near the school? — Yes, they do."],answer:["Do"],hint:["→ Do (въпрос)"]},
+    {text:["I "," like Mondays!"],answer:["don't"],hint:["I → don't"]},
+    {text:["What time "," she go to bed?"],answer:["does"],hint:["WH → does"]},
+    {text:["We "," have a car. We walk everywhere."],answer:["don't"],hint:["we → don't"]},
+    {text:["Where "," your family live?"],answer:["does"],hint:["WH → does"]},
+  ],
+  dlg:[
+    {speaker:"A",text:["What "," you usually do after school?"],answer:["do"],hint:["→ do"]},
+    {speaker:"B",text:["I "," (play) football with my friends. And you?"],answer:["play"],hint:["I → play"]},
+    {speaker:"A",text:["I "," (read) books. My sister "," (hate) reading though!"],answer:["read","hates"],hint:["I → read","she → hates"]},
+    {speaker:"B",text:["Ha! What "," she like then?"],answer:["does"],hint:["→ does"]},
+    {speaker:"A",text:["She "," (watch) videos online all day."],answer:["watches"],hint:["she → watches"]},
+    {speaker:"B",text:[""," your parents let her?"],answer:["Do"],hint:["→ Do (въпрос)"]},
+    {speaker:"A",text:["They "," (know)! She "," (do) it secretly."],answer:["don't know","does"],hint:["they → don't know","she → does"]},
+    {speaker:"B",text:["Ha! Well, my dad "," (say) TV is bad, but he "," (watch) football every night!"],answer:["says","watches"],hint:["he → says","he → watches"]},
+  ]
+},
+
+// ── PRESENT CONTINUOUS ─────────────────────────────────────────────────────
+pc:{
+  ex1:[
+    {text:["I "," (read) a great book right now."],answer:["am reading"],hint:["I am + reading"]},
+    {text:["She "," (dance) in her room."],answer:["is dancing"],hint:["she is + dancing (drop e)"]},
+    {text:["They "," (play) football in the garden."],answer:["are playing"],hint:["they are + playing"]},
+    {text:["He "," (sit) on the sofa."],answer:["is sitting"],hint:["he is + sitting (double t)"]},
+    {text:["We "," (watch) a film at the moment."],answer:["are watching"],hint:["we are + watching"]},
+    {text:["The cat "," (sleep) on my bed!"],answer:["is sleeping"],hint:["it is + sleeping"]},
+    {text:["My parents "," (cook) dinner now."],answer:["are cooking"],hint:["they are + cooking"]},
+    {text:["I "," (not/listen) to music — I "," (study)!"],answer:["am not listening","am studying"],hint:["am not + listening","am + studying"]},
+    {text:["Look! The dog "," (run) in the park."],answer:["is running"],hint:["it is + running (double n)"]},
+    {text:["What "," you "," (do) right now?"],answer:["are","doing"],hint:["are","doing"]},
+  ],
+  ex2:[
+    {text:["She "," sleeping. She's reading."],answer:["isn't"],hint:["→ isn't"]},
+    {text:[""," they playing football? — Yes, they are."],answer:["Are"],hint:["→ Are (въпрос)"]},
+    {text:["We "," watching TV. We're doing homework."],answer:["aren't"],hint:["→ aren't"]},
+    {text:[""," he coming to the party? — No, he isn't."],answer:["Is"],hint:["→ Is (въпрос)"]},
+    {text:["What "," you eating?"],answer:["are"],hint:["WH → are"]},
+    {text:["I "," working right now — please don't disturb me!"],answer:["am"],hint:["I → am"]},
+    {text:["Why "," she crying?"],answer:["is"],hint:["WH → is"]},
+    {text:["The children "," making noise. They're very quiet today!"],answer:["aren't"],hint:["→ aren't"]},
+  ],
+  dlg:[
+    {speaker:"Mum",text:["Hi! What "," you "," (do)?"],answer:["are","doing"],hint:["→ are","→ doing"]},
+    {speaker:"Tom",text:["Hi Mum! I "," (watch) a film."],answer:["am watching"],hint:["am + watching"]},
+    {speaker:"Mum",text:["And "," your sister "," (do) her homework?"],answer:["is","doing"],hint:["→ is","→ doing"]},
+    {speaker:"Tom",text:["No, she ",". She "," (talk) on the phone."],answer:["isn't","is talking"],hint:["→ isn't","is + talking"]},
+    {speaker:"Mum",text:["Oh! And the dog? What "," it "," (do)?"],answer:["is","doing"],hint:["→ is","→ doing"]},
+    {speaker:"Tom",text:["It "," (sleep) on the sofa as usual!"],answer:["is sleeping"],hint:["is + sleeping"]},
+    {speaker:"Mum",text:["OK. I "," (come) home in 20 minutes. Please tidy up!"],answer:["am coming"],hint:["am + coming (drop e)"]},
+    {speaker:"Tom",text:["Don't worry, we "," (clean) right now!"],answer:["are cleaning"],hint:["are + cleaning"]},
+  ]
+},
+
+// ── IRREGULAR VERBS ────────────────────────────────────────────────────────
+ir:{
+  ex1:[
+    {text:["We "," (go) to the cinema last Friday."],answer:["went"],hint:["go → went"]},
+    {text:["I "," (see) a great film last night."],answer:["saw"],hint:["see → saw"]},
+    {text:["She "," (have) a birthday party on Sunday."],answer:["had"],hint:["have → had"]},
+    {text:["They "," (eat) pizza for dinner."],answer:["ate"],hint:["eat → ate"]},
+    {text:["He "," (come) home very late yesterday."],answer:["came"],hint:["come → came"]},
+    {text:["We "," (take) lots of photos on holiday."],answer:["took"],hint:["take → took"]},
+    {text:["Mum "," (make) a delicious cake for my birthday."],answer:["made"],hint:["make → made"]},
+    {text:["I "," (get) a new bike for Christmas!"],answer:["got"],hint:["get → got"]},
+    {text:["She "," (buy) a new dress at the market."],answer:["bought"],hint:["buy → bought"]},
+    {text:["He "," (give) me a book as a present."],answer:["gave"],hint:["give → gave"]},
+    {text:["The dog "," (run) into the garden."],answer:["ran"],hint:["run → ran"]},
+    {text:["They "," (do) their homework before dinner."],answer:["did"],hint:["do → did"]},
+    {text:["We "," (fly) to Spain for our holiday."],answer:["flew"],hint:["fly → flew"]},
+    {text:["She "," (sit) next to me on the bus."],answer:["sat"],hint:["sit → sat"]},
+    {text:["Dad "," (drive) us to school yesterday."],answer:["drove"],hint:["drive → drove"]},
+    {text:["The cat "," (sleep) on the sofa all afternoon."],answer:["slept"],hint:["sleep → slept"]},
+  ],
+  ex2:[
+    {text:["She "," go to school yesterday. She was ill."],answer:["didn't"],hint:["→ didn't + go"]},
+    {text:[""," you see that film? — Yes, it was amazing!"],answer:["Did"],hint:["→ Did (въпрос)"]},
+    {text:["They "," eat breakfast. They weren't hungry."],answer:["didn't"],hint:["→ didn't + eat"]},
+    {text:["Where "," you go last summer?"],answer:["did"],hint:["WH → did"]},
+    {text:["He "," take the bus. He walked instead."],answer:["didn't"],hint:["→ didn't + take"]},
+    {text:["What "," she buy at the shop?"],answer:["did"],hint:["WH → did"]},
+    {text:[""," they come to your party? — No, they didn't."],answer:["Did"],hint:["→ Did (въпрос)"]},
+    {text:["Why "," you get home so late?"],answer:["did"],hint:["WH → did"]},
+    {text:["He "," drive to work. He took the train."],answer:["didn't"],hint:["→ didn't + drive"]},
+    {text:["Where "," they fly to for their holiday?"],answer:["did"],hint:["WH → did"]},
+  ],
+  dlg:[
+    {speaker:"A",text:["How "," your summer holiday?"],answer:["was"],hint:["→ was"]},
+    {speaker:"B",text:["It "," fantastic! We "," (fly) to Greece!"],answer:["was","flew"],hint:["→ was","fly → flew"]},
+    {speaker:"A",text:["Wow! How long "," the flight?"],answer:["was"],hint:["→ was"]},
+    {speaker:"B",text:["About two hours. I "," (sit) by the window and watched the clouds."],answer:["sat"],hint:["sit → sat"]},
+    {speaker:"A",text:["Amazing! What "," you see there?"],answer:["did"],hint:["WH → did"]},
+    {speaker:"B",text:["We "," (see) the Acropolis and "," (eat) amazing food every day!"],answer:["saw","ate"],hint:["see → saw","eat → ate"]},
+    {speaker:"A",text:["And how "," you get around — "," you rent a car?"],answer:["did","Did"],hint:["WH → did","→ Did"]},
+    {speaker:"B",text:["Yes! Dad "," (drive) us everywhere. He "," (buy) me a cool souvenir too."],answer:["drove","bought"],hint:["drive → drove","buy → bought"]},
+    {speaker:"A",text:["I "," (have) a boring summer. I "," (not/go) anywhere."],answer:["had","didn't go"],hint:["have → had","didn't + go"]},
+    {speaker:"B",text:["Oh no! Did you at least "," (sleep) well and rest?"],answer:["sleep"],hint:["основна форма след 'did' → sleep"]},
+  ]
+},
+
+// ── THERE IS / THERE ARE ───────────────────────────────────────────────────
+th:{
+  ex1:[
+    {text:[" "," a big park near our school."],answer:["There is"],hint:["единствено → There is"]},
+    {text:[" "," twenty students in my class."],answer:["There are"],hint:["множествено → There are"]},
+    {text:[" "," a swimming pool in the sports centre."],answer:["There is"],hint:["единствено → There is"]},
+    {text:[" "," any shops in the village. It's very small."],answer:["There aren't"],hint:["отрицание мн.ч. → There aren't"]},
+    {text:[" "," a great café next to the library."],answer:["There is"],hint:["единствено → There is"]},
+    {text:[" "," any milk in the fridge. We need to buy some."],answer:["There isn't"],hint:["отрицание ед.ч. → There isn't"]},
+    {text:[" "," three bedrooms in our new flat."],answer:["There are"],hint:["множествено → There are"]},
+    {text:[" "," a cinema in our town? — Yes, there is!"],answer:["Is there"],hint:["въпрос ед.ч. → Is there"]},
+    {text:[" "," any buses after 10pm? — No, there aren't."],answer:["Are there"],hint:["въпрос мн.ч. → Are there"]},
+    {text:[" "," a lot of trees in the school garden."],answer:["There are"],hint:["множествено → There are"]},
+    {text:[" "," a dog in the house? — No, "," ."],answer:["Is there","there isn't"],hint:["Is there","→ there isn't"]},
+    {text:[" "," any chairs in the kitchen? — Yes, "," four."],answer:["Are there","there are"],hint:["Are there","→ there are"]},
+  ],
+  ex2:[
+    {text:[""," a gym in your school?"],answer:["Is there"],hint:["ед.ч. → Is there"]},
+    {text:["Yes, "," . It's on the ground floor."],answer:["there is"],hint:["→ there is"]},
+    {text:[""," any students from other countries in your class?"],answer:["Are there"],hint:["мн.ч. → Are there"]},
+    {text:["No, "," . We're all from Bulgaria."],answer:["there aren't"],hint:["→ there aren't"]},
+    {text:[""," a library near your house?"],answer:["Is there"],hint:["ед.ч. → Is there"]},
+    {text:["Yes, "," a great library five minutes away!"],answer:["there is"],hint:["→ there is"]},
+    {text:[""," any good restaurants in your town?"],answer:["Are there"],hint:["мн.ч. → Are there"]},
+    {text:["Yes, "," lots of them!"],answer:["there are"],hint:["→ there are"]},
+  ],
+  dlg:[
+    {speaker:"A",text:["Tell me about your new flat. "," a big living room?"],answer:["Is there"],hint:["→ Is there"]},
+    {speaker:"B",text:["Yes, "," ! It's really big and sunny."],answer:["there is"],hint:["→ there is"]},
+    {speaker:"A",text:["How many bedrooms "," ?"],answer:["are there"],hint:["→ are there"]},
+    {speaker:"B",text:[" "," three bedrooms and a small office for Dad."],answer:["There are"],hint:["→ There are"]},
+    {speaker:"A",text:[""," a garden?"],answer:["Is there"],hint:["→ Is there"]},
+    {speaker:"B",text:["No, "," . But "," a nice balcony with flowers."],answer:["there isn't","there is"],hint:["→ there isn't","→ there is"]},
+    {speaker:"A",text:[""," any shops nearby?"],answer:["Are there"],hint:["→ Are there"]},
+    {speaker:"B",text:["Yes, "," a supermarket and a bakery just around the corner!"],answer:["there is"],hint:["→ there is"]},
+    {speaker:"A",text:["Sounds perfect! "," a school near you too?"],answer:["Is there"],hint:["→ Is there"]},
+    {speaker:"B",text:["Yes! "," a great school five minutes away. We love it here!"],answer:["There is"],hint:["→ There is"]},
+  ]
+}
+
+}; // end DATA
+
+// ── NEW: CAN / CAN'T data ──────────────────────────────────────────────────
+DATA.can = {
+  ex1:[
+    {text:["She "," swim very well. She trains every day."],answer:["can"],hint:["умение → can"]},
+    {text:["He "," drive. He's only 12 years old!"],answer:["can't"],hint:["неумение → can't"]},
+    {text:["I "," play the guitar, but I "," play the piano."],answer:["can","can't"],hint:["→ can","→ can't"]},
+    {text:["They "," speak three languages!"],answer:["can"],hint:["умение → can"]},
+    {text:["Our dog "," open doors — it's amazing!"],answer:["can"],hint:["умение → can"]},
+    {text:["I "," see the board. Can I sit closer, please?"],answer:["can't"],hint:["неумение → can't"]},
+    {text:["Babies "," walk, but they "," crawl."],answer:["can't","can"],hint:["→ can't","→ can"]},
+    {text:["She "," cook at all. Her mum always does it."],answer:["can't"],hint:["→ can't"]},
+    {text:["We "," use phones in class. It's not allowed."],answer:["can't"],hint:["забрана → can't"]},
+    {text:["You "," borrow my book if you want."],answer:["can"],hint:["разрешение → can"]},
+    {text:["He "," run very fast — he always wins races."],answer:["can"],hint:["→ can"]},
+    {text:["I "," find my keys anywhere!"],answer:["can't"],hint:["→ can't"]},
+  ],
+  ex2:[
+    {text:[""," you ride a bike? — Yes, I "," ."],answer:["Can","can"],hint:["→ Can","→ can"]},
+    {text:[""," she speak Spanish? — No, she "," ."],answer:["Can","can't"],hint:["→ Can","→ can't"]},
+    {text:["What languages "," you speak?"],answer:["can"],hint:["WH → can"]},
+    {text:[""," I open the window? It's very hot. — Yes, you "," ."],answer:["Can","can"],hint:["→ Can","→ can"]},
+    {text:[""," they come to the party? — No, they "," . They're busy."],answer:["Can","can't"],hint:["→ Can","→ can't"]},
+    {text:["How fast "," he run?"],answer:["can"],hint:["WH → can"]},
+    {text:[""," I have some more cake? — Sorry, you "," . There isn't any left!"],answer:["Can","can't"],hint:["→ Can","→ can't"]},
+    {text:["What "," you do that I can't?"],answer:["can"],hint:["WH → can"]},
+  ],
+  dlg:[
+    {speaker:"A",text:["Hey, "," you come to football practice tomorrow?"],answer:["can"],hint:["→ can"]},
+    {speaker:"B",text:["Sorry, I "," . I have a piano lesson."],answer:["can't"],hint:["→ can't"]},
+    {speaker:"A",text:["Oh, "," you play piano well?"],answer:["can"],hint:["→ can"]},
+    {speaker:"B",text:["A bit! I "," play simple songs, but I "," read music very well yet."],answer:["can","can't"],hint:["→ can","→ can't"]},
+    {speaker:"A",text:["Wow. I "," play any instruments. "," you teach me something?"],answer:["can't","Can"],hint:["→ can't","→ Can"]},
+    {speaker:"B",text:["Sure! But first — "," you swim? There's a pool trip on Friday."],answer:["can"],hint:["→ can"]},
+    {speaker:"A",text:["Yes, I "," ! I love swimming. "," we go together?"],answer:["can","Can"],hint:["→ can","→ Can"]},
+    {speaker:"B",text:["Of course we "," ! It'll be great fun!"],answer:["can"],hint:["→ can"]},
+  ]
+};
+
+// ── NEW: PREPOSITIONS data ─────────────────────────────────────────────────
+DATA.prep = {
+  ex1:[
+    {text:["The cat is "," the box."],answer:["in"],hint:["вътре → in"]},
+    {text:["The book is "," the table."],answer:["on"],hint:["върху → on"]},
+    {text:["She is "," school right now."],answer:["at"],hint:["определено място → at"]},
+    {text:["The dog is sleeping "," the bed."],answer:["under"],hint:["под → under"]},
+    {text:["The supermarket is "," the park."],answer:["next to"],hint:["до → next to"]},
+    {text:["The car is parked "," the garage."],answer:["in front of"],hint:["пред → in front of"]},
+    {text:["My school is "," the library and the park."],answer:["between"],hint:["между → between"]},
+    {text:["The post office is "," the bank."],answer:["opposite"],hint:["срещу → opposite"]},
+    {text:["There is a picture "," the wall."],answer:["on"],hint:["върху повърхност → on"]},
+    {text:["The children are playing "," the garden."],answer:["in"],hint:["вътре → in"]},
+    {text:["He left his bag "," the chair."],answer:["behind"],hint:["зад → behind"]},
+    {text:["We always meet "," the bus stop."],answer:["at"],hint:["определено място → at"]},
+    {text:["She put the flowers "," a vase."],answer:["in"],hint:["вътре → in"]},
+    {text:["The keys are "," the shelf, "," the clock."],answer:["on","next to"],hint:["→ on","→ next to"]},
+  ],
+  ex2:[
+    {text:["My birthday is "," March."],answer:["in"],hint:["месец → in"]},
+    {text:["The party is "," Saturday."],answer:["on"],hint:["ден → on"]},
+    {text:["We eat dinner "," 7 o'clock."],answer:["at"],hint:["час → at"]},
+    {text:["She was born "," 2012."],answer:["in"],hint:["година → in"]},
+    {text:["School starts "," Monday morning."],answer:["on"],hint:["ден → on"]},
+    {text:["We always open presents "," Christmas."],answer:["at"],hint:["празник → at"]},
+    {text:["It's very cold here "," winter."],answer:["in"],hint:["сезон → in"]},
+    {text:["I'll see you "," 3pm "," Friday."],answer:["at","on"],hint:["час → at","ден → on"]},
+    {text:["The film starts "," the evening."],answer:["in"],hint:["частта на деня → in"]},
+    {text:["My dad works "," night."],answer:["at"],hint:["at night → at"]},
+  ],
+  dlg:[
+    {speaker:"A",text:["Can you describe your bedroom?"],answer:[],hint:[]},
+    {speaker:"B",text:["Sure! My bed is "," the middle of the room."],answer:["in"],hint:["→ in"]},
+    {speaker:"A",text:["What's "," the bed?"],answer:["on"],hint:["→ on"]},
+    {speaker:"B",text:["My phone and some books. And my cat always sleeps "," the bed!"],answer:["under"],hint:["→ under"]},
+    {speaker:"A",text:["Ha! Where's your desk?"],answer:[],hint:[]},
+    {speaker:"B",text:["It's "," the window, "," my bookshelf."],answer:["next to","opposite"],hint:["→ next to","→ opposite"]},
+    {speaker:"A",text:["Is there anything "," the walls?"],answer:["on"],hint:["→ on"]},
+    {speaker:"B",text:["Yes! I have posters "," my favourite bands "," my bed."],answer:["of","above"],hint:["→ of","→ above"]},
+    {speaker:"A",text:["Sounds cool! And where's your wardrobe?"],answer:[],hint:[]},
+    {speaker:"B",text:["It's "," the door, "," my desk and the wall."],answer:["behind","between"],hint:["→ behind","→ between"]},
+  ]
+};
+
+// Init can / prep
+buildEx(DATA.can.ex1,'can-ex1','can-ex1');
+buildEx(DATA.can.ex2,'can-ex2','can-ex2');
+buildDlg(DATA.can.dlg,'can-dlg','can-dlg',sp=>sp==='A'?'sp-olive':'sp-green');
+
+buildEx(DATA.prep.ex1,'prep-ex1','prep-ex1');
+buildEx(DATA.prep.ex2,'prep-ex2','prep-ex2');
+buildDlg(DATA.prep.dlg,'prep-dlg','prep-dlg',sp=>sp==='A'?'sp-cyan':'sp-green');
+
+// ── Init all sections ──────────────────────────────────────────────────────
+// Was/Were
+buildEx(DATA.ww.ex,'ww-ex','ww-ex');
+buildYN(DATA.ww.yn,'ww-yn','ww-yn','#7b3fc4');
+buildDlg(DATA.ww.dlg,'ww-dlg','ww-dlg',sp=>sp==='A'?'sp-blue':'sp-green');
+
+// Did/Didn't
+const wb=document.getElementById('did-wb');
+["played","watched","walked","talked","listened","worked","visited","cleaned","cooked","jumped"].forEach(v=>{
+  const s=document.createElement('span');s.className='chip chip-purple';s.textContent=v;wb.appendChild(s);
+});
+buildEx(DATA.did.ex1,'did-ex1','did-ex1');
+buildEx(DATA.did.ex2,'did-ex2','did-ex2');
+buildYN(DATA.did.yn,'did-yn','did-yn','#d97706');
+buildDlg(DATA.did.dlg,'did-dlg','did-dlg',sp=>sp==='A'?'sp-purple':'sp-green');
+
+// Present Simple
+buildEx(DATA.ps.ex1,'ps-ex1','ps-ex1');
+buildEx(DATA.ps.ex2,'ps-ex2','ps-ex2');
+buildDlg(DATA.ps.dlg,'ps-dlg','ps-dlg',sp=>sp==='A'?'sp-teal':'sp-green');
+
+// Present Continuous
+buildEx(DATA.pc.ex1,'pc-ex1','pc-ex1');
+buildEx(DATA.pc.ex2,'pc-ex2','pc-ex2');
+buildDlg(DATA.pc.dlg,'pc-dlg','pc-dlg',sp=>sp==='Mum'?'sp-rose':'sp-green');
+
+// Irregular verbs
+buildEx(DATA.ir.ex1,'ir-ex1','ir-ex1');
+buildEx(DATA.ir.ex2,'ir-ex2','ir-ex2');
+buildDlg(DATA.ir.dlg,'ir-dlg','ir-dlg',sp=>sp==='A'?'sp-indigo':'sp-green');
+
+// There is/are
+buildEx(DATA.th.ex1,'th-ex1','th-ex1');
+buildEx(DATA.th.ex2,'th-ex2','th-ex2');
+buildDlg(DATA.th.dlg,'th-dlg','th-dlg',sp=>sp==='A'?'sp-indigo':'sp-green');
+
+// ── WH- QUESTIONS I ────────────────────────────────────────────────────────
+DATA.wh1 = {
+  ex1:[
+    {text:[""," is your favourite subject at school?"],                      answer:["What"],  hint:["питаме за нещо → What"]},
+    {text:[""," do you live?"],                                               answer:["Where"], hint:["питаме за място → Where"]},
+    {text:[""," does school finish today?"],                                  answer:["When"],  hint:["питаме за времето → When"]},
+    {text:[""," is your best friend?"],                                       answer:["Who"],   hint:["питаме за човек → Who"]},
+    {text:[""," do you go to school? — By bus."],                            answer:["How"],   hint:["питаме за начин → How"]},
+    {text:[""," do you like English? — Because it's fun!"],                  answer:["Why"],   hint:["питаме за причина → Why"]},
+    {text:[""," does your mum work?"],                                        answer:["Where"], hint:["питаме за място → Where"]},
+    {text:[""," time does the film start?"],                                  answer:["What"],  hint:["What time → What"]},
+    {text:[""," teaches you Maths?"],                                         answer:["Who"],   hint:["питаме за човек → Who"]},
+    {text:[""," do you usually do at weekends?"],                             answer:["What"],  hint:["питаме за нещо → What"]},
+    {text:[""," is your birthday?"],                                          answer:["When"],  hint:["питаме за времето → When"]},
+    {text:[""," do you feel today?"],                                         answer:["How"],   hint:["питаме за начин/чувство → How"]},
+  ],
+  ex2:[
+    {text:[""," did you go last summer?"],                                    answer:["Where"], hint:["питаме за място → Where"]},
+    {text:[""," was your favourite subject last year?"],                      answer:["What"],  hint:["питаме за нещо → What"]},
+    {text:[""," did the party finish?"],                                      answer:["When"],  hint:["питаме за времето → When"]},
+    {text:[""," did you go to the cinema with?"],                             answer:["Who"],   hint:["питаме за човек → Who"]},
+    {text:[""," was the weather on holiday?"],                                answer:["How"],   hint:["питаме за начин → How"]},
+    {text:[""," did you miss school yesterday? — I was ill."],                answer:["Why"],   hint:["питаме за причина → Why"]},
+    {text:[""," did you eat for breakfast this morning?"],                    answer:["What"],  hint:["питаме за нещо → What"]},
+    {text:[""," were your grandparents born?"],                               answer:["Where"], hint:["питаме за място → Where"]},
+    {text:[""," did you come home so late?"],                                 answer:["Why"],   hint:["питаме за причина → Why"]},
+    {text:[""," did you travel to London?"],                                  answer:["How"],   hint:["питаме за начин → How"]},
+    {text:[""," helped you with your homework?"],                             answer:["Who"],   hint:["питаме за човек → Who"]},
+    {text:[""," did the lesson end yesterday?"],                              answer:["When"],  hint:["питаме за времето → When"]},
+  ],
+  ex3:[
+    {text:["(do / you / where / live) → ","?"],                              answer:["Where do you live"],   hint:["Where + do + you + live"]},
+    {text:["(your / what / name / is) → ","?"],                              answer:["What is your name"],   hint:["What + is + your + name"]},
+    {text:["(she / does / why / cry) → ","?"],                               answer:["Why does she cry"],    hint:["Why + does + she + cry"]},
+    {text:["(go / how / you / do / to school) → ","?"],                      answer:["How do you go to school"],hint:["How + do + you + go + to school"]},
+    {text:["(who / your / is / teacher) → ","?"],                            answer:["Who is your teacher"], hint:["Who + is + your + teacher"]},
+    {text:["(did / where / they / go) → ","?"],                              answer:["Where did they go"],   hint:["Where + did + they + go"]},
+    {text:["(did / what / you / eat) → ","?"],                               answer:["What did you eat"],    hint:["What + did + you + eat"]},
+    {text:["(she / was / why / late) → ","?"],                               answer:["Why was she late"],    hint:["Why + was + she + late"]},
+  ],
+  dlg:[
+    {speaker:"A",text:[""," is your name?"],                                 answer:["What"],  hint:["→ What"]},
+    {speaker:"B",text:["My name is Sofia. And yours?"],                      answer:[],        hint:[]},
+    {speaker:"A",text:["I'm Alex. "," do you live?"],                        answer:["Where"], hint:["→ Where"]},
+    {speaker:"B",text:["I live in Plovdiv. "," did you move here?"],         answer:["When"],  hint:["→ When"]},
+    {speaker:"A",text:["Last month. "," do you like most about this school?"],answer:["What"], hint:["→ What"]},
+    {speaker:"B",text:["The English lessons! "," is your English teacher?"], answer:["Who"],   hint:["→ Who"]},
+    {speaker:"A",text:["Mrs Petrova. She's great! "," do you come to school?"],answer:["How"], hint:["→ How"]},
+    {speaker:"B",text:["By bike, usually. "," don't you take the bus?"],     answer:["Why"],   hint:["→ Why"]},
+    {speaker:"A",text:["It's too slow! "," did you go last summer?"],        answer:["Where"], hint:["→ Where"]},
+    {speaker:"B",text:["We went to the seaside. It was amazing!"],           answer:[],        hint:[]},
+  ]
+};
+
+// ── WH- QUESTIONS II ───────────────────────────────────────────────────────
+DATA.wh2 = {
+  ex1:[
+    {text:[""," colour do you prefer — red or blue?"],                       answer:["Which"],    hint:["избор от дадени → Which"]},
+    {text:[""," bag is this? Is it yours?"],                                 answer:["Whose"],    hint:["питаме за притежание → Whose"]},
+    {text:[""," water do you drink every day?"],                             answer:["How much"], hint:["неброимо → How much"]},
+    {text:[""," students are in your class?"],                               answer:["How many"], hint:["броимо → How many"]},
+    {text:[""," is your teacher?"],                                          answer:["How old"],  hint:["питаме за възраст → How old"]},
+    {text:[""," is the school holiday?"],                                    answer:["How long"], hint:["питаме за продължителност → How long"]},
+    {text:[""," subject do you like more — English or Maths?"],             answer:["Which"],    hint:["избор → Which"]},
+    {text:[""," phone is that on the desk?"],                                answer:["Whose"],    hint:["питаме за притежание → Whose"]},
+    {text:[""," brothers or sisters do you have?"],                          answer:["How many"], hint:["броимо → How many"]},
+    {text:[""," does a bus ticket cost?"],                                   answer:["How much"], hint:["неброимо/цена → How much"]},
+  ],
+  ex2:[
+    {text:[""," team won the match — the red or the blue?"],                 answer:["Which"],    hint:["избор → Which"]},
+    {text:[""," coat was on the chair? Was it Tom's?"],                      answer:["Whose"],    hint:["питаме за притежание → Whose"]},
+    {text:[""," money did you spend on holiday?"],                           answer:["How much"], hint:["неброимо → How much"]},
+    {text:[""," photos did you take at the party?"],                         answer:["How many"], hint:["броимо → How many"]},
+    {text:[""," was your grandmother when she was born?"],                   answer:["How old"],  hint:["→ How old (не работи тук — How old was she когато се е родила)"]},
+    {text:[""," did the film last?"],                                        answer:["How long"], hint:["питаме за продължителност → How long"]},
+    {text:[""," book did you choose — the big one or the small one?"],       answer:["Which"],    hint:["избор → Which"]},
+    {text:[""," homework was on the teacher's desk?"],                       answer:["Whose"],    hint:["питаме за притежание → Whose"]},
+    {text:[""," was your dad when he learned to drive?"],                    answer:["How old"],  hint:["питаме за възраст → How old"]},
+    {text:[""," days did you stay at the seaside?"],                         answer:["How many"], hint:["броимо → How many"]},
+  ],
+  dlg:[
+    {speaker:"Teacher",text:[""," of you is new to this school?"],          answer:["Which"],    hint:["→ Which"]},
+    {speaker:"Mia",    text:["I am! My name is Mia."],                       answer:[],           hint:[]},
+    {speaker:"Teacher",text:[""," years old are you, Mia?"],                answer:["How"],      hint:["How old → How"]},
+    {speaker:"Mia",    text:["I'm eleven."],                                 answer:[],           hint:[]},
+    {speaker:"Teacher",text:[""," siblings do you have?"],                  answer:["How many"], hint:["→ How many"]},
+    {speaker:"Mia",    text:["One brother. He's eight."],                    answer:[],           hint:[]},
+    {speaker:"Teacher",text:["Nice! "," school did you go to before?"],     answer:["Which"],    hint:["→ Which"]},
+    {speaker:"Mia",    text:["St. Kliment's in Sofia."],                     answer:[],           hint:[]},
+    {speaker:"Teacher",text:[""," long does it take you to get here?"],     answer:["How"],      hint:["How long → How"]},
+    {speaker:"Mia",    text:["About twenty minutes by bus. "," is my seat?"],answer:["Which"],   hint:["→ Which"]},
+    {speaker:"Teacher",text:["The one next to the window — "," pencil case is on it already!"],answer:["whose"],hint:["→ whose"]},
+  ]
+};
+
+// Init wh1 / wh2
+buildEx(DATA.wh1.ex1,'wh1-ex1','wh1-ex1');
+buildEx(DATA.wh1.ex2,'wh1-ex2','wh1-ex2');
+buildEx(DATA.wh1.ex3,'wh1-ex3','wh1-ex3');
+buildDlg(DATA.wh1.dlg,'wh1-dlg','wh1-dlg',sp=>sp==='A'?'sp-pink':'sp-green');
+
+buildEx(DATA.wh2.ex1,'wh2-ex1','wh2-ex1');
+buildEx(DATA.wh2.ex2,'wh2-ex2','wh2-ex2');
+buildDlg(DATA.wh2.dlg,'wh2-dlg','wh2-dlg',sp=>sp==='Teacher'?'sp-emerald':'sp-green');
+
+// Set default language after DOM is fully built
+setLang('bg');
+
+// ── DEV: Test mode — auto-fill all answers on current page ────────────────
+function testFillAll() {
+  // Find active page prefix
+  const activePage = document.querySelector('.page.active');
+  if (!activePage || activePage.id === 'page-home') return;
+  const pageId = activePage.id.replace('page-', '');
+  const prefixMap = {
+    waswere:'ww', did:'did', presSimple:'ps',
+    presCont:'pc', irreg:'ir', there:'th', can:'can', prep:'prep'
+  };
+  const prefix = prefixMap[pageId];
+  if (!prefix || !DATA[prefix]) return;
+
+  // Fill every input based on DATA
+  const sections = TOPIC_SECTIONS[prefix];
+  sections.forEach(sec => {
+    const data = DATA[prefix][sec];
+    if (!data) return;
+    data.forEach((item, i) => {
+      const group = prefix + '-' + sec;
+      const answers = item.answer;
+      answers.forEach((ans, j) => {
+        const inp = document.querySelector(
+          `input[data-group="${group}"][data-idx="${i}"][data-sub="${j}"]`
+        );
+        if (inp) inp.value = ans;
+      });
+    });
+    // Auto-check this section
+    chk(prefix, sec);
+  });
+}
+
+
+// ── EmailJS init ───────────────────────────────────────────────────────────
+emailjs.init('Kg6Li-fDJmDD61PA6');
+
+// ── Topic names (for notification message) ────────────────────────────────
+const TOPIC_NAMES = {
+  ww:   'Was / Were',
+  did:  'Did / Didn\'t',
+  ps:   'Present Simple',
+  pc:   'Present Continuous',
+  ir:   'Неправилни глаголи / Irregular Verbs',
+  th:   'There is / There are',
+  can:  'Can / Can\'t',
+  prep: 'Prepositions',
+  wh1:  'WH- Questions I (What/Where/When/Who/How/Why)',
+  wh2:  'WH- Questions II (Which/Whose/How much-many-old-long)',
+};
+
+// How many sections each topic has (prefix → array of section keys)
+const TOPIC_SECTIONS = {
+  ww:   ['ex','yn','dlg'],
+  did:  ['ex1','ex2','yn','dlg'],
+  ps:   ['ex1','ex2','dlg'],
+  pc:   ['ex1','ex2','dlg'],
+  ir:   ['ex1','ex2','dlg'],
+  th:   ['ex1','ex2','dlg'],
+  can:  ['ex1','ex2','dlg'],
+  prep: ['ex1','ex2','dlg'],
+  wh1:  ['ex1','ex2','ex3','dlg'],
+  wh2:  ['ex1','ex2','dlg'],
+};
+
+let currentModalTopic = '';
+
+function checkTopicComplete(prefix) {
+  const sections = TOPIC_SECTIONS[prefix];
+  if (!sections) return;
+  // Check every score box for this topic — all must be 'good' (100%)
+  const allDone = sections.every(sec => {
+    const box = document.getElementById(`${prefix}-score-${sec}`);
+    return box && box.classList.contains('good');
+  });
+  if (allDone) {
+    currentModalTopic = prefix;
+    openModal(prefix);
+  }
+}
+
+function openModal(prefix) {
+  const topicName = TOPIC_NAMES[prefix] || prefix;
+  const T = LANGS[currentLang];
+  const isBg = currentLang === 'bg';
+
+  document.getElementById('modal-title').textContent =
+    isBg ? '🎉 Браво! Темата е завършена!' : '🎉 Well done! Topic completed!';
+  document.getElementById('modal-sub').textContent =
+    isBg
+      ? `Искаш ли да изпратиш съобщение до учителя, че си попълнил правилно всички упражнения по темата "${topicName}"?`
+      : `Would you like to send a message to your teacher that you completed all exercises for "${topicName}"?`;
+  document.getElementById('modal-name').placeholder = isBg ? 'Въведи твоето име...' : 'Enter your name...';
+  document.getElementById('modal-yes').textContent = isBg ? '✉️ Да, изпрати!' : '✉️ Yes, send!';
+  document.getElementById('modal-status').textContent = '';
+  document.getElementById('modal-name').value = '';
+  document.getElementById('modal-yes').disabled = false;
+  document.getElementById('notif-modal').classList.add('show');
+  setTimeout(() => document.getElementById('modal-name').focus(), 300);
+}
+
+function closeModal() {
+  document.getElementById('notif-modal').classList.remove('show');
+}
+
+// Close modal if clicking outside the box
+document.getElementById('notif-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function sendNotification() {
+  const name = document.getElementById('modal-name').value.trim();
+  const isBg = currentLang === 'bg';
+
+  if (!name) {
+    document.getElementById('modal-status').textContent =
+      isBg ? '⚠️ Моля въведи твоето име!' : '⚠️ Please enter your name!';
+    document.getElementById('modal-status').className = 'modal-status err';
+    document.getElementById('modal-name').focus();
+    return;
+  }
+
+  const topicName = TOPIC_NAMES[currentModalTopic] || currentModalTopic;
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('bg-BG', {
+    day:'2-digit', month:'2-digit', year:'numeric',
+    hour:'2-digit', minute:'2-digit'
+  });
+
+  const btn = document.getElementById('modal-yes');
+  btn.disabled = true;
+  btn.textContent = isBg ? '⏳ Изпраща се...' : '⏳ Sending...';
+
+  emailjs.send('service_illhymt', 'template_xbb86jm', {
+    student_name: name,
+    topic_name:   topicName,
+    date:         dateStr,
+  }).then(() => {
+    document.getElementById('modal-status').textContent =
+      isBg ? '✅ Съобщението е изпратено успешно!' : '✅ Message sent successfully!';
+    document.getElementById('modal-status').className = 'modal-status ok';
+    btn.textContent = isBg ? '✉️ Изпратено!' : '✉️ Sent!';
+    setTimeout(() => closeModal(), 2500);
+  }).catch(err => {
+    console.error('EmailJS error:', err);
+    document.getElementById('modal-status').textContent =
+      isBg ? '❌ Грешка при изпращане. Опитай пак.' : '❌ Failed to send. Please try again.';
+    document.getElementById('modal-status').className = 'modal-status err';
+    btn.disabled = false;
+    btn.textContent = isBg ? '✉️ Да, изпрати!' : '✉️ Yes, send!';
+  });
+}
+</script>
+</body>
+</html>
