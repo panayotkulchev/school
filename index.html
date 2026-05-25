@@ -18,13 +18,14 @@
   --cyan:#0e7490;--dcyan:#164e63;
   --pink:#db2777;--dpink:#9d174d;
   --emerald:#059669;--demerald:#065f46;
+  --orange:#ea580c;--dorange:#9a3412;
   --red:#d32f2f;--bg:#f0f4fb;
 }
 body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
 /* HEADER */
 .site-header{background:linear-gradient(135deg,#0d47a1 0%,#1565c0 50%,#1a73e8 100%);color:white;box-shadow:0 3px 16px rgba(13,71,161,.3);position:relative;overflow:hidden}
 .site-header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%}
-.header-inner{max-width:980px;margin:0 auto;padding:20px 20px 0;position:relative;z-index:1;display:flex;align-items:flex-start;gap:16px}
+.header-inner{max-width:1280px;margin:0 auto;padding:20px 20px 0;position:relative;z-index:1;display:flex;align-items:flex-start;gap:16px}
 .flags-col{display:flex;flex-direction:column;gap:8px;padding-top:4px}
 .flag-svg{width:52px;height:34px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.25);flex-shrink:0}
 .header-text{flex:1}
@@ -32,7 +33,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .site-title{font-size:26px;font-weight:800;letter-spacing:-.5px;line-height:1.1;margin-bottom:4px}
 .site-subtitle{font-size:13px;opacity:.8;margin-bottom:16px}
 /* NAV */
-.nav-tabs{display:flex;gap:3px;flex-wrap:wrap;margin-top:4px}
+.nav-tabs{display:none}
 .nav-tab{padding:8px 14px;background:rgba(255,255,255,.12);border:none;border-radius:8px 8px 0 0;color:rgba(255,255,255,.75);font-size:12.5px;font-weight:600;cursor:pointer;transition:background .2s,color .2s;font-family:inherit;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .nav-tab:hover{background:rgba(255,255,255,.22);color:white}
 .nav-tab.active{background:var(--bg);color:var(--dblue);box-shadow:0 -2px 8px rgba(0,0,0,.08)}
@@ -42,7 +43,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .page{display:none;flex:1}
 .page.active{display:block}
 /* HOME */
-.home-body{max-width:980px;margin:0 auto;padding:28px 20px 40px}
+.home-body{max-width:960px;margin:0;padding:28px 20px 40px}
 .welcome-card{background:white;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,.07);padding:24px 28px;margin-bottom:24px;display:flex;gap:24px;align-items:flex-start}
 .welcome-illustration{flex-shrink:0;width:130px;height:130px}
 .welcome-text h2{font-size:20px;font-weight:700;color:var(--dblue);margin-bottom:8px}
@@ -55,6 +56,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .tc-indigo:hover{border-color:var(--indigo)} .tc-amber:hover{border-color:var(--amber)}
 .tc-olive:hover{border-color:var(--olive)} .tc-cyan:hover{border-color:var(--cyan)}
 .tc-pink:hover{border-color:var(--pink)} .tc-emerald:hover{border-color:var(--emerald)}
+.tc-orange:hover{border-color:var(--orange)}
 .topic-card-header{padding:15px 18px 12px;color:white;display:flex;align-items:center;gap:11px}
 .tc-blue   .topic-card-header{background:linear-gradient(135deg,var(--blue),var(--dblue))}
 .tc-purple .topic-card-header{background:linear-gradient(135deg,var(--purple),var(--dpurp))}
@@ -66,6 +68,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .tc-cyan   .topic-card-header{background:linear-gradient(135deg,var(--cyan),var(--dcyan))}
 .tc-pink   .topic-card-header{background:linear-gradient(135deg,var(--pink),var(--dpink))}
 .tc-emerald .topic-card-header{background:linear-gradient(135deg,var(--emerald),var(--demerald))}
+.tc-orange  .topic-card-header{background:linear-gradient(135deg,var(--orange),var(--dorange))}
 .topic-icon{width:40px;height:40px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
 .topic-card-title{font-size:16px;font-weight:700}
 .topic-card-sub{font-size:11px;opacity:.8;margin-top:2px}
@@ -83,15 +86,17 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .tc-cyan   .topic-tag{background:#cffafe;color:var(--dcyan)}
 .tc-pink   .topic-tag{background:#fce7f3;color:var(--dpink)}
 .tc-emerald .topic-tag{background:#d1fae5;color:var(--demerald)}
+.tc-orange  .topic-tag{background:#ffedd5;color:var(--dorange)}
 .open-btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:7px 14px;border-radius:7px;font-size:12.5px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:opacity .15s;color:white}
 .tc-blue   .open-btn{background:var(--blue)}   .tc-purple .open-btn{background:var(--purple)}
 .tc-teal   .open-btn{background:var(--teal)}   .tc-rose   .open-btn{background:var(--rose)}
 .tc-indigo .open-btn{background:var(--indigo)} .tc-amber  .open-btn{background:var(--amber)}
 .tc-olive  .open-btn{background:var(--olive)} .tc-cyan   .open-btn{background:var(--cyan)}
 .tc-pink   .open-btn{background:var(--pink)} .tc-emerald .open-btn{background:var(--emerald)}
+.tc-orange  .open-btn{background:var(--orange)}
 .open-btn:hover{opacity:.88}
 /* EXERCISE SHARED */
-.ex-page-header{max-width:900px;margin:24px auto 0;padding:0 18px}
+.ex-page-header{max-width:860px;margin:24px auto 0;padding:0 18px}
 .back-btn{display:inline-flex;align-items:center;gap:6px;background:white;border:1.5px solid #ddd;border-radius:7px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#555;cursor:pointer;font-family:inherit;margin-bottom:14px;transition:background .15s}
 .back-btn:hover{background:#f4f4f4}
 .grammar-box{background:#fff;border-radius:10px;padding:16px 22px;margin-bottom:0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
@@ -100,11 +105,13 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .gb-indigo{border-left:5px solid var(--indigo)} .gb-amber{border-left:5px solid var(--amber)}
 .gb-olive{border-left:5px solid var(--olive)} .gb-cyan{border-left:5px solid var(--cyan)}
 .gb-pink{border-left:5px solid var(--pink)} .gb-emerald{border-left:5px solid var(--emerald)}
+.gb-orange{border-left:5px solid var(--orange)}
 .grammar-box h3{font-size:12.5px;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
 .gb-blue h3{color:var(--blue)} .gb-purple h3{color:var(--purple)} .gb-teal h3{color:var(--teal)}
 .gb-rose h3{color:var(--rose)} .gb-indigo h3{color:var(--indigo)} .gb-amber h3{color:var(--amber)}
 .gb-olive h3{color:var(--olive)} .gb-cyan h3{color:var(--cyan)}
 .gb-pink h3{color:var(--pink)} .gb-emerald h3{color:var(--emerald)}
+.gb-orange h3{color:var(--orange)}
 .grammar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
 .grammar-card{border-radius:8px;padding:9px 13px;font-size:12.5px}
 .gb-blue   .grammar-card{background:#f0f4ff} .gb-purple .grammar-card{background:#f3eaff}
@@ -112,18 +119,20 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .gb-indigo .grammar-card{background:#eef2ff} .gb-amber  .grammar-card{background:#fffbeb}
 .gb-olive  .grammar-card{background:#f7fee7} .gb-cyan   .grammar-card{background:#ecfeff}
 .gb-pink   .grammar-card{background:#fce7f3} .gb-emerald .grammar-card{background:#d1fae5}
+.gb-orange  .grammar-card{background:#ffedd5}
 .grammar-card .form{font-weight:700;font-size:13.5px}
 .gb-blue .grammar-card .form{color:var(--dblue)} .gb-purple .grammar-card .form{color:var(--dpurp)}
 .gb-teal .grammar-card .form{color:var(--dteal)} .gb-rose .grammar-card .form{color:var(--drose)}
 .gb-indigo .grammar-card .form{color:var(--dindigo)} .gb-amber .grammar-card .form{color:var(--damber)}
 .gb-olive .grammar-card .form{color:var(--dolive)} .gb-cyan .grammar-card .form{color:var(--dcyan)}
 .gb-pink .grammar-card .form{color:var(--dpink)} .gb-emerald .grammar-card .form{color:var(--demerald)}
+.gb-orange .grammar-card .form{color:var(--dorange)}
 .grammar-card .example{color:#555;margin-top:2px;font-style:italic}
 .verb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin-top:12px}
 .verb-card{border:1.5px solid #d8b4fe;border-radius:7px;padding:6px 11px;font-size:13px;display:flex;align-items:center;gap:6px}
 .verb-card.teal{background:#e0f7fa;border-color:#67e8f9} .verb-card.purple{background:#f3eaff}
 .verb-base{font-weight:700} .verb-arrow{color:#aaa;font-size:11px} .verb-past{font-weight:700;color:var(--green)}
-.main{max-width:900px;margin:18px auto 0;padding:0 18px 50px}
+.main{max-width:860px;margin:18px auto 0;padding:0 18px 50px}
 .section-card{background:#fff;border-radius:13px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:20px;overflow:hidden}
 .section-header{color:white;padding:12px 20px;font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:9px}
 .section-header .icon{width:24px;height:24px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0}
@@ -144,6 +153,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .sp-teal{color:var(--teal)} .sp-rose{color:var(--rose)} .sp-indigo{color:var(--indigo)}
 .sp-olive{color:var(--olive)} .sp-cyan{color:var(--cyan)}
 .sp-pink{color:var(--pink)} .sp-emerald{color:var(--emerald)}
+.sp-orange{color:var(--orange)}
 .word-bank{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
 .chip{border-radius:20px;padding:3px 12px;font-size:13px;font-weight:700;border:1.5px solid}
 .chip-purple{background:#f3eaff;color:var(--dpurp);border-color:#d8b4fe}
@@ -157,6 +167,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .chip-cyan{background:#cffafe;color:var(--dcyan);border-color:#67e8f9}
 .chip-pink{background:#fce7f3;color:var(--dpink);border-color:#f9a8d4}
 .chip-emerald{background:#d1fae5;color:var(--demerald);border-color:#6ee7b7}
+.chip-orange{background:#ffedd5;color:var(--dorange);border-color:#fdba74}
 .controls{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}
 button{padding:8px 18px;font-size:13px;font-weight:700;border-radius:7px;cursor:pointer;border:none;transition:transform .1s,opacity .15s;font-family:inherit}
 button:active{transform:scale(.97)}
@@ -183,6 +194,25 @@ footer span{opacity:.6;font-size:12px;display:block;margin-top:3px}
   .flags-col{flex-direction:row} .welcome-card{flex-direction:column}
   .nav-tab{padding:7px 10px;font-size:11.5px} .section-body{padding:12px 14px}
 }
+
+/* SIDEBAR NAV */
+.site-body{display:flex;min-height:calc(100vh - 140px);max-width:1280px;margin:0 auto;width:100%}
+.sidebar{width:220px;flex-shrink:0;background:#fff;border-right:1px solid #e5e7eb;padding:16px 10px;display:flex;flex-direction:column;gap:3px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar-group{font-size:10.5px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.06em;padding:10px 8px 4px}
+.sidebar-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:transparent;color:#444;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;transition:background .15s,color .15s;text-align:left;width:100%}
+.sidebar-btn:hover{background:#f3f4f6;color:#1a1a2e}
+.sidebar-btn.active{background:#eff6ff;color:var(--dblue);font-weight:700}
+.sidebar-btn .sb-badge{background:#e5e7eb;border-radius:10px;padding:1px 7px;font-size:10px;margin-left:auto;color:#888}
+.sidebar-btn.active .sb-badge{background:var(--blue);color:white}
+.sidebar-icon{font-size:15px;width:20px;text-align:center}
+.content-area{flex:1;min-width:0}
+@media(max-width:768px){
+  .site-body{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:static;flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid #e5e7eb;padding:8px}
+  .sidebar-group{display:none}
+  .sidebar-btn{padding:6px 10px;font-size:12px}
+}
+
 /* NOTIFICATION MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
 .modal-overlay.show{opacity:1;pointer-events:all}
@@ -239,6 +269,9 @@ const LANGS = {
     prep_desc3:'Приятел те пита за стаята ти — опиши накратко.',
     ww_dlgDesc:'Двама приятели разговарят за уикенда.',
     did_dlgDesc:'Двама приятели разговарят след уикенда.',
+    tc_wh1_title:'WH- Въпроси I',tc_wh1_sub:'What, Where, When, Who, How, Why',tc_wh1_desc:'Основните въпросителни думи — значение и употреба в изречения.',
+    tc_wh2_title:'WH- Въпроси II',tc_wh2_sub:'Which, Whose, How much/many/old/long',tc_wh2_desc:'Разширени въпросителни думи за по-точни въпроси.',
+    tc_comp_title:'Comparatives & Superlatives',tc_comp_sub:'bigger, the biggest...',tc_comp_desc:'Степенуване на прилагателни — по- и най- с правилни, неправилни и завършващи на -y.',
   },
   en: {
     schoolName:'🏫 Primary School "Dimitar Blagoev" — Veliko Tarnovo',
@@ -272,6 +305,9 @@ const LANGS = {
     prep_desc3:"A friend asks about your room — describe it.",
     ww_dlgDesc:'Two friends talk about their weekend.',
     did_dlgDesc:'Two friends talk after the weekend.',
+    tc_wh1_title:'WH- Questions I',tc_wh1_sub:'What, Where, When, Who, How, Why',tc_wh1_desc:'The main question words — meaning and use in sentences.',
+    tc_wh2_title:'WH- Questions II',tc_wh2_sub:'Which, Whose, How much/many/old/long',tc_wh2_desc:'Extended question words for more precise questions.',
+    tc_comp_title:'Comparatives & Superlatives',tc_comp_sub:'bigger, the biggest...',tc_comp_desc:'Comparing adjectives — regular, irregular and -y adjectives.',
   }
 };
 
@@ -312,7 +348,8 @@ function setLang(lang) {
   // Topic cards
   [['waswere','tc_waswere'],['did','tc_did'],['presSimple','tc_ps'],
    ['presCont','tc_pc'],['irreg','tc_ir'],['there','tc_th'],
-   ['can','tc_can'],['prep','tc_prep']].forEach(([page,key]) => {
+   ['can','tc_can'],['prep','tc_prep'],
+   ['wh1','tc_wh1'],['wh2','tc_wh2'],['comp','tc_comp']].forEach(([page,key]) => {
     const card = document.querySelector(`.topic-card[onclick*="${page}"]`);
     if (!card) return;
     const t = card.querySelector('.topic-card-title');
@@ -359,19 +396,7 @@ function setLang(lang) {
     <div class="school-name" data-i18n="schoolName">🏫 ОУ "Димитър Благоев" — гр. Велико Търново</div>
     <div class="site-title" data-i18n="siteTitle">Английски език — 5 клас</div>
     <div class="site-subtitle" data-i18n="siteSubtitle">Интерактивни упражнения по граматика</div>
-    <nav class="nav-tabs">
-      <button class="nav-tab active" onclick="showPage('home')" id="tab-home" data-i18n="navHome">🏠 Начало</button>
-      <button class="nav-tab" onclick="showPage('waswere')" id="tab-waswere">Was/Were <span class="badge">3</span></button>
-      <button class="nav-tab" onclick="showPage('did')" id="tab-did">Did/Didn't <span class="badge">4</span></button>
-      <button class="nav-tab" onclick="showPage('presSimple')" id="tab-presSimple">Present Simple <span class="badge">3</span></button>
-      <button class="nav-tab" onclick="showPage('presCont')" id="tab-presCont">Present Cont. <span class="badge">3</span></button>
-      <button class="nav-tab" onclick="showPage('irreg')" id="tab-irreg" data-i18n="navIrreg">Неправилни глаголи <span class="badge">3</span></button>
-      <button class="nav-tab" onclick="showPage('there')" id="tab-there">There is/are <span class="badge">3</span></button>
-      <button class="nav-tab" onclick="showPage('can')" id="tab-can">Can / Can't <span class="badge">3</span></button>
-      <button class="nav-tab" onclick="showPage('prep')" id="tab-prep">Prepositions <span class="badge">3</span></button>
-      <button class="nav-tab" onclick="showPage('wh1')" id="tab-wh1">WH- Questions I <span class="badge">4</span></button>
-      <button class="nav-tab" onclick="showPage('wh2')" id="tab-wh2">WH- Questions II <span class="badge">3</span></button>
-    </nav>
+
   </div>
   <div class="lang-switcher">
     <button class="lang-btn active" id="lang-bg" onclick="setLang('bg')">🇧🇬 БГ</button>
@@ -379,6 +404,33 @@ function setLang(lang) {
   </div>
 </div>
 </div>
+
+
+<!-- SIDEBAR + CONTENT WRAPPER -->
+<div style="display:flex;justify-content:center;background:var(--bg)">
+<div class="site-body">
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-group">Навигация</div>
+  <button class="sidebar-btn active" onclick="showPage('home')" id="tab-home"><span class="sidebar-icon">🏠</span> Начало <span class="sb-badge"></span></button>
+
+  <div class="sidebar-group">Минало време</div>
+  <button class="sidebar-btn" onclick="showPage('waswere')" id="tab-waswere"><span class="sidebar-icon">🕐</span> Was / Were <span class="sb-badge">3</span></button>
+  <button class="sidebar-btn" onclick="showPage('did')" id="tab-did"><span class="sidebar-icon">✏️</span> Did / Didn't <span class="sb-badge">4</span></button>
+  <button class="sidebar-btn" onclick="showPage('irreg')" id="tab-irreg"><span class="sidebar-icon">📖</span> Неправилни глаголи <span class="sb-badge">3</span></button>
+
+  <div class="sidebar-group">Сегашно време</div>
+  <button class="sidebar-btn" onclick="showPage('presSimple')" id="tab-presSimple"><span class="sidebar-icon">⚡</span> Present Simple <span class="sb-badge">3</span></button>
+  <button class="sidebar-btn" onclick="showPage('presCont')" id="tab-presCont"><span class="sidebar-icon">🔄</span> Present Continuous <span class="sb-badge">3</span></button>
+
+  <div class="sidebar-group">Граматика</div>
+  <button class="sidebar-btn" onclick="showPage('there')" id="tab-there"><span class="sidebar-icon">🏠</span> There is / There are <span class="sb-badge">3</span></button>
+  <button class="sidebar-btn" onclick="showPage('can')" id="tab-can"><span class="sidebar-icon">💪</span> Can / Can't <span class="sb-badge">3</span></button>
+  <button class="sidebar-btn" onclick="showPage('prep')" id="tab-prep"><span class="sidebar-icon">📍</span> Prepositions <span class="sb-badge">3</span></button>
+  <button class="sidebar-btn" onclick="showPage('wh1')" id="tab-wh1"><span class="sidebar-icon">❓</span> WH- Questions I <span class="sb-badge">4</span></button>
+  <button class="sidebar-btn" onclick="showPage('wh2')" id="tab-wh2"><span class="sidebar-icon">🔍</span> WH- Questions II <span class="sb-badge">3</span></button>
+  <button class="sidebar-btn" onclick="showPage('comp')" id="tab-comp"><span class="sidebar-icon">📊</span> Comparatives <span class="sb-badge">4</span></button>
+</nav>
+<div class="content-area">
 
 <!-- HOME PAGE -->
 <div id="page-home" class="page active">
@@ -488,6 +540,13 @@ function setLang(lang) {
       <div class="topic-card-header"><div class="topic-icon">🔍</div><div><div class="topic-card-title">WH- Questions II</div><div class="topic-card-sub">Which, Whose, How much/many/old/long</div></div></div>
       <div class="topic-card-body"><p>Разширени въпросителни думи за по-точни въпроси.</p>
       <div class="topic-tags"><span class="topic-tag">Which / Whose</span><span class="topic-tag">How much/many</span><span class="topic-tag">How old/long</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-orange" onclick="showPage('comp')">
+      <div class="topic-card-header"><div class="topic-icon">📊</div><div><div class="topic-card-title">Comparatives & Superlatives</div><div class="topic-card-sub">bigger, the biggest...</div></div></div>
+      <div class="topic-card-body"><p>Степенуване на прилагателни — по- и най- с правилни, неправилни и завършващи на -y.</p>
+      <div class="topic-tags"><span class="topic-tag">-er / -est</span><span class="topic-tag">-ier / -iest</span><span class="topic-tag">better/best</span><span class="topic-tag">than / the</span></div>
       <button class="open-btn">Отвори →</button></div>
     </div>
 
@@ -1052,6 +1111,94 @@ function setLang(lang) {
 </div>
 </div>
 
+<!-- ══════════ COMPARATIVES & SUPERLATIVES PAGE ══════════ -->
+<div id="page-comp" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-orange">
+    <h3>📊 Comparatives & Superlatives — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card">
+        <div class="form">Кратки прилагателни → +er / +est</div>
+        <div class="example">small → smaller → the smallest</div>
+        <div class="example">cold → colder → the coldest</div>
+      </div>
+      <div class="grammar-card">
+        <div class="form">Удвояване на съгласна → +er / +est</div>
+        <div class="example">big → bigger → the biggest</div>
+        <div class="example">hot → hotter → the hottest</div>
+      </div>
+      <div class="grammar-card">
+        <div class="form">Завършващи на -y → -ier / -iest</div>
+        <div class="example">heavy → heavier → the heaviest</div>
+        <div class="example">easy → easier → the easiest</div>
+      </div>
+      <div class="grammar-card">
+        <div class="form">Неправилни (irregular)</div>
+        <div class="example">good → better → the best</div>
+        <div class="example">bad → worse → the worst</div>
+        <div class="example">far → farther → the farthest</div>
+      </div>
+      <div class="grammar-card">
+        <div class="form">Употреба — Comparative</div>
+        <div class="example">My bag is heavier <strong>than</strong> yours.</div>
+      </div>
+      <div class="grammar-card">
+        <div class="form">Употреба — Superlative</div>
+        <div class="example">This is <strong>the</strong> biggest school in town.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main">
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--orange)"><div class="icon">1</div>Група 1 — Правилни кратки прилагателни (+er / +est)</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Напиши <strong>comparative</strong> и <strong>superlative</strong> формата.</p>
+      <div id="comp-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--orange)" onclick="chk('comp','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('comp','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="comp-score-ex1"></div>
+      <div class="pb-wrap" id="comp-pb-ex1-w" style="display:none"><div class="pb" id="comp-pb-ex1" style="background:linear-gradient(90deg,var(--orange),var(--dorange))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--rose)"><div class="icon">2</div>Група 2 — Удвояване (-gg-, -tt-) и завършващи на -y</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Внимавай — <strong>big→bigger</strong> (двойна съгласна) и <strong>heavy→heavier</strong> (-y→-ier).</p>
+      <div id="comp-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--rose)" onclick="chk('comp','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('comp','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="comp-score-ex2"></div>
+      <div class="pb-wrap" id="comp-pb-ex2-w" style="display:none"><div class="pb" id="comp-pb-ex2" style="background:linear-gradient(90deg,var(--rose),var(--drose))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--indigo)"><div class="icon">3</div>Попълни изречението с правилната форма</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Използвай comparative или superlative според изречението. Формата на прилагателното е дадена в скобки.</p>
+      <div id="comp-ex3"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--indigo)" onclick="chk('comp','ex3')">✔ Провери</button><button class="btn-reset" onclick="rst('comp','ex3')">↺ Изтрий</button></div>
+      <div class="score-box" id="comp-score-ex3"></div>
+      <div class="pb-wrap" id="comp-pb-ex3-w" style="display:none"><div class="pb" id="comp-pb-ex3" style="background:linear-gradient(90deg,var(--indigo),var(--dindigo))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">4</div>Диалог — сравняваме неща</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Двама приятели сравняват раниците си преди училище.</p>
+      <div class="dialog-box" id="comp-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('comp','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('comp','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="comp-score-dlg"></div>
+      <div class="pb-wrap" id="comp-pb-dlg-w" style="display:none"><div class="pb" id="comp-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
 <!-- NOTIFICATION MODAL -->
 <div class="modal-overlay" id="notif-modal">
   <div class="modal-box">
@@ -1067,6 +1214,10 @@ function setLang(lang) {
   </div>
 </div>
 
+</div><!-- /content-area -->
+</div><!-- /site-body -->
+</div><!-- /outer-center -->
+
 <!-- FOOTER -->
 <footer>
   <div>Английски език — 5 клас &nbsp;|&nbsp; ОУ "Димитър Благоев", гр. Велико Търново</div>
@@ -1080,9 +1231,10 @@ function setLang(lang) {
 // ── Navigation ─────────────────────────────────────────────────────────────
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.nav-tab,.sidebar-btn').forEach(t=>t.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  document.getElementById('tab-'+id).classList.add('active');
+  const tab = document.getElementById('tab-'+id);
+  if(tab) tab.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -1665,6 +1817,98 @@ DATA.wh2 = {
   ]
 };
 
+// ── COMPARATIVES & SUPERLATIVES ────────────────────────────────────────────
+DATA.comp = {
+  // ex1: regular short adjectives — [adjective, comparative, superlative]
+  ex1:[
+    {text:["bad → "," → the ",""],          answer:["worse","worst"],        hint:["worse","worst (неправилно!)"]},
+    {text:["cheap → "," → the ",""],        answer:["cheaper","cheapest"],   hint:["cheaper","cheapest"]},
+    {text:["clean → "," → the ",""],        answer:["cleaner","cleanest"],   hint:["cleaner","cleanest"]},
+    {text:["cold → "," → the ",""],         answer:["colder","coldest"],     hint:["colder","coldest"]},
+    {text:["dirty → "," → the ",""],        answer:["dirtier","dirtiest"],   hint:["dirtier (-y→ier)","dirtiest (-y→iest)"]},
+    {text:["far → "," → the ",""],          answer:["farther","farthest"],   hint:["farther","farthest (неправилно!)"]},
+    {text:["fast → "," → the ",""],         answer:["faster","fastest"],     hint:["faster","fastest"]},
+    {text:["good → "," → the ",""],         answer:["better","best"],        hint:["better","best (неправилно!)"]},
+    {text:["hard → "," → the ",""],         answer:["harder","hardest"],     hint:["harder","hardest"]},
+    {text:["long → "," → the ",""],         answer:["longer","longest"],     hint:["longer","longest"]},
+    {text:["near → "," → the ",""],         answer:["nearer","nearest"],     hint:["nearer","nearest"]},
+    {text:["new → "," → the ",""],          answer:["newer","newest"],       hint:["newer","newest"]},
+    {text:["old → "," → the ",""],          answer:["older","oldest"],       hint:["older","oldest"]},
+    {text:["short → "," → the ",""],        answer:["shorter","shortest"],   hint:["shorter","shortest"]},
+    {text:["slow → "," → the ",""],         answer:["slower","slowest"],     hint:["slower","slowest"]},
+    {text:["small → "," → the ",""],        answer:["smaller","smallest"],   hint:["smaller","smallest"]},
+    {text:["tall → "," → the ",""],         answer:["taller","tallest"],     hint:["taller","tallest"]},
+    {text:["young → "," → the ",""],        answer:["younger","youngest"],   hint:["younger","youngest"]},
+  ],
+  // ex2: double consonant + -y group
+  ex2:[
+    {text:["big → "," → the ",""],          answer:["bigger","biggest"],     hint:["bigger (двойна г)","biggest"]},
+    {text:["hot → "," → the ",""],          answer:["hotter","hottest"],     hint:["hotter (двойна т)","hottest"]},
+    {text:["heavy → "," → the ",""],        answer:["heavier","heaviest"],   hint:["heavier (-y→ier)","heaviest"]},
+    {text:["easy → "," → the ",""],         answer:["easier","easiest"],     hint:["easier (-y→ier)","easiest"]},
+    {text:["light → "," → the ",""],        answer:["lighter","lightest"],   hint:["lighter","lightest"]},
+  ],
+  // ex3: fill in sentences
+  ex3:[
+    {text:["My bag is "," (heavy) than yours."],                             answer:["heavier"],     hint:["heavy → heavier"]},
+    {text:["This is "," (good) film I've ever seen!"],                       answer:["the best"],    hint:["good → the best"]},
+    {text:["Today is "," (cold) than yesterday."],                           answer:["colder"],      hint:["cold → colder"]},
+    {text:["She is the "," (tall) student in the class."],                   answer:["tallest"],     hint:["tall → tallest"]},
+    {text:["This exercise is "," (easy) than the last one."],                answer:["easier"],      hint:["easy → easier"]},
+    {text:["He runs "," (fast) than me."],                                   answer:["faster"],      hint:["fast → faster"]},
+    {text:["That was the "," (bad) day of my life!"],                        answer:["worst"],       hint:["bad → the worst"]},
+    {text:["Is the Nile "," (long) river in the world?"],                    answer:["the longest"], hint:["long → the longest"]},
+    {text:["My new phone is "," (small) than my old one."],                  answer:["smaller"],     hint:["small → smaller"]},
+    {text:["This is the "," (big) pizza I've ever eaten!"],                  answer:["biggest"],     hint:["big → the biggest"]},
+    {text:["She is "," (young) than her brother."],                          answer:["younger"],     hint:["young → younger"]},
+    {text:["Which is "," (near) supermarket to school?"],                    answer:["the nearest"], hint:["near → the nearest"]},
+  ],
+  dlg:[
+    {speaker:"A",text:["Wow, your bag is "," (heavy) than mine!"],           answer:["heavier"],     hint:["heavy → heavier"]},
+    {speaker:"B",text:["I know! It's the "," (heavy) bag in the class."],    answer:["heaviest"],    hint:["heavy → heaviest"]},
+    {speaker:"A",text:["Is your new school "," (big) than your old one?"],   answer:["bigger"],      hint:["big → bigger (двойна г)"]},
+    {speaker:"B",text:["Yes, much "," ! And the lessons are "," (long) too."],answer:["bigger","longer"],hint:["→ bigger","long → longer"]},
+    {speaker:"A",text:["Is the homework "," (hard) than before?"],           answer:["harder"],      hint:["hard → harder"]},
+    {speaker:"B",text:["A bit. But the teachers are "," (good) than at my old school!"],answer:["better"],hint:["good → better"]},
+    {speaker:"A",text:["That's the "," (important) thing!"],                 answer:["most important"],hint:["long adj → most important"]},
+    {speaker:"B",text:["True! And our classroom is the "," (clean) in the whole school."],answer:["cleanest"],hint:["clean → cleanest"]},
+  ]
+};
+
+// Special builder for comp ex1/ex2 — shows: adjective → ___ → the ___
+function buildCompTable(data, group, containerId) {
+  const container = document.getElementById(containerId);
+  // header
+  const hdr = document.createElement('div');
+  hdr.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px;padding:6px 10px;background:var(--bg);border-radius:7px';
+  hdr.innerHTML = `
+    <span style="font-size:12px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.05em">Adjective</span>
+    <span style="font-size:12px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.05em">Comparative (+er)</span>
+    <span style="font-size:12px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.05em">Superlative (the +est)</span>`;
+  container.appendChild(hdr);
+
+  data.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.style.cssText = `display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:5px 10px;border-radius:7px;align-items:center;background:${i%2===0?'#fff':'var(--bg)'}`;
+    // adjective (extract from text before →)
+    const adj = item.text[0].replace(' → ', '');
+    div.innerHTML = `
+      <span style="font-size:15px;font-weight:700;color:var(--dorange)">${adj}</span>
+      <span><input class="blank" data-group="${group}" data-idx="${i}" data-sub="0" type="text" autocomplete="off" spellcheck="false" style="width:120px"></span>
+      <span>the <input class="blank" data-group="${group}" data-idx="${i}" data-sub="1" type="text" autocomplete="off" spellcheck="false" style="width:110px"></span>`;
+    const hint = document.createElement('span');
+    hint.className = 'hint-text';
+    hint.id = `hint-${group}-${i}`;
+    div.appendChild(hint);
+    container.appendChild(div);
+  });
+}
+
+buildCompTable(DATA.comp.ex1, 'comp-ex1', 'comp-ex1');
+buildCompTable(DATA.comp.ex2, 'comp-ex2', 'comp-ex2');
+buildEx(DATA.comp.ex3, 'comp-ex3', 'comp-ex3');
+buildDlg(DATA.comp.dlg, 'comp-dlg', 'comp-dlg', sp => sp==='A' ? 'sp-orange' : 'sp-green');
+
 // Init wh1 / wh2
 buildEx(DATA.wh1.ex1,'wh1-ex1','wh1-ex1');
 buildEx(DATA.wh1.ex2,'wh1-ex2','wh1-ex2');
@@ -1686,7 +1930,8 @@ function testFillAll() {
   const pageId = activePage.id.replace('page-', '');
   const prefixMap = {
     waswere:'ww', did:'did', presSimple:'ps',
-    presCont:'pc', irreg:'ir', there:'th', can:'can', prep:'prep'
+    presCont:'pc', irreg:'ir', there:'th', can:'can', prep:'prep',
+    wh1:'wh1', wh2:'wh2', comp:'comp'
   };
   const prefix = prefixMap[pageId];
   if (!prefix || !DATA[prefix]) return;
@@ -1727,6 +1972,7 @@ const TOPIC_NAMES = {
   prep: 'Prepositions',
   wh1:  'WH- Questions I (What/Where/When/Who/How/Why)',
   wh2:  'WH- Questions II (Which/Whose/How much-many-old-long)',
+  comp: 'Comparatives & Superlatives',
 };
 
 // How many sections each topic has (prefix → array of section keys)
@@ -1741,6 +1987,7 @@ const TOPIC_SECTIONS = {
   prep: ['ex1','ex2','dlg'],
   wh1:  ['ex1','ex2','ex3','dlg'],
   wh2:  ['ex1','ex2','dlg'],
+  comp: ['ex1','ex2','ex3','dlg'],
 };
 
 let currentModalTopic = '';
