@@ -120,6 +120,14 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a2e;
 .gb-olive  .grammar-card{background:#f7fee7} .gb-cyan   .grammar-card{background:#ecfeff}
 .gb-pink   .grammar-card{background:#fce7f3} .gb-emerald .grammar-card{background:#d1fae5}
 .gb-orange  .grammar-card{background:#ffedd5}
+.tc-green:hover{border-color:var(--green)}
+.tc-green .topic-card-header{background:linear-gradient(135deg,var(--green),var(--dgreen))}
+.tc-green .topic-tag{background:#e6f4ea;color:var(--dgreen)}
+.tc-green .open-btn{background:var(--green)}
+.gb-green{border-left:5px solid var(--green)}
+.gb-green h3{color:var(--green)}
+.gb-green .grammar-card{background:#e6f4ea}
+.gb-green .grammar-card .form{color:var(--dgreen)}
 .grammar-card .form{font-weight:700;font-size:13.5px}
 .gb-blue .grammar-card .form{color:var(--dblue)} .gb-purple .grammar-card .form{color:var(--dpurp)}
 .gb-teal .grammar-card .form{color:var(--dteal)} .gb-rose .grammar-card .form{color:var(--drose)}
@@ -272,6 +280,7 @@ const LANGS = {
     tc_wh1_title:'WH- Въпроси I',tc_wh1_sub:'What, Where, When, Who, How, Why',tc_wh1_desc:'Основните въпросителни думи — значение и употреба в изречения.',
     tc_wh2_title:'WH- Въпроси II',tc_wh2_sub:'Which, Whose, How much/many/old/long',tc_wh2_desc:'Разширени въпросителни думи за по-точни въпроси.',
     tc_comp_title:'Comparatives & Superlatives',tc_comp_sub:'bigger, the biggest...',tc_comp_desc:'Степенуване на прилагателни — по- и най- с правилни, неправилни и завършващи на -y.',
+    tc_adj_title:'Adjectives of Quality',tc_adj_sub:'more / the most',tc_adj_desc:'Прилагателни за качества — степенуване с more и the most.',
   },
   en: {
     schoolName:'🏫 Primary School "Dimitar Blagoev" — Veliko Tarnovo',
@@ -308,6 +317,7 @@ const LANGS = {
     tc_wh1_title:'WH- Questions I',tc_wh1_sub:'What, Where, When, Who, How, Why',tc_wh1_desc:'The main question words — meaning and use in sentences.',
     tc_wh2_title:'WH- Questions II',tc_wh2_sub:'Which, Whose, How much/many/old/long',tc_wh2_desc:'Extended question words for more precise questions.',
     tc_comp_title:'Comparatives & Superlatives',tc_comp_sub:'bigger, the biggest...',tc_comp_desc:'Comparing adjectives — regular, irregular and -y adjectives.',
+    tc_adj_title:'Adjectives of Quality',tc_adj_sub:'more / the most',tc_adj_desc:'Quality adjectives — comparing with more and the most.',
   }
 };
 
@@ -349,7 +359,8 @@ function setLang(lang) {
   [['waswere','tc_waswere'],['did','tc_did'],['presSimple','tc_ps'],
    ['presCont','tc_pc'],['irreg','tc_ir'],['there','tc_th'],
    ['can','tc_can'],['prep','tc_prep'],
-   ['wh1','tc_wh1'],['wh2','tc_wh2'],['comp','tc_comp']].forEach(([page,key]) => {
+   ['wh1','tc_wh1'],['wh2','tc_wh2'],['comp','tc_comp'],
+   ['adj','tc_adj']].forEach(([page,key]) => {
     const card = document.querySelector(`.topic-card[onclick*="${page}"]`);
     if (!card) return;
     const t = card.querySelector('.topic-card-title');
@@ -429,6 +440,7 @@ function setLang(lang) {
   <button class="sidebar-btn" onclick="showPage('wh1')" id="tab-wh1"><span class="sidebar-icon">❓</span> WH- Questions I <span class="sb-badge">4</span></button>
   <button class="sidebar-btn" onclick="showPage('wh2')" id="tab-wh2"><span class="sidebar-icon">🔍</span> WH- Questions II <span class="sb-badge">3</span></button>
   <button class="sidebar-btn" onclick="showPage('comp')" id="tab-comp"><span class="sidebar-icon">📊</span> Comparatives <span class="sb-badge">4</span></button>
+  <button class="sidebar-btn" onclick="showPage('adj')" id="tab-adj"><span class="sidebar-icon">✨</span> Adj. of Quality <span class="sb-badge">4</span></button>
 </nav>
 <div class="content-area">
 
@@ -547,6 +559,13 @@ function setLang(lang) {
       <div class="topic-card-header"><div class="topic-icon">📊</div><div><div class="topic-card-title">Comparatives & Superlatives</div><div class="topic-card-sub">bigger, the biggest...</div></div></div>
       <div class="topic-card-body"><p>Степенуване на прилагателни — по- и най- с правилни, неправилни и завършващи на -y.</p>
       <div class="topic-tags"><span class="topic-tag">-er / -est</span><span class="topic-tag">-ier / -iest</span><span class="topic-tag">better/best</span><span class="topic-tag">than / the</span></div>
+      <button class="open-btn">Отвори →</button></div>
+    </div>
+
+    <div class="topic-card tc-green" onclick="showPage('adj')">
+      <div class="topic-card-header"><div class="topic-icon">✨</div><div><div class="topic-card-title">Adjectives of Quality</div><div class="topic-card-sub">more / the most</div></div></div>
+      <div class="topic-card-body"><p>Прилагателни за качества — степенуване с more и the most.</p>
+      <div class="topic-tags"><span class="topic-tag">positive / negative</span><span class="topic-tag">more ___</span><span class="topic-tag">the most ___</span></div>
       <button class="open-btn">Отвори →</button></div>
     </div>
 
@@ -1193,6 +1212,89 @@ function setLang(lang) {
       <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('comp','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('comp','dlg')">↺ Изтрий</button></div>
       <div class="score-box" id="comp-score-dlg"></div>
       <div class="pb-wrap" id="comp-pb-dlg-w" style="display:none"><div class="pb" id="comp-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ ADJECTIVES OF QUALITY PAGE ══════════ -->
+<div id="page-adj" class="page">
+<div class="ex-page-header">
+  <button class="back-btn" onclick="showPage('home')">← Назад</button>
+  <div class="grammar-box gb-green">
+    <h3>✨ Adjectives of Quality — Граматика</h3>
+    <div class="grammar-grid">
+      <div class="grammar-card"><div class="form">Comparative → more + прилагателно + than</div><div class="example">London is <strong>more exciting</strong> than our town.</div></div>
+      <div class="grammar-card"><div class="form">Superlative → the most + прилагателно</div><div class="example">He is <strong>the most famous</strong> actor in the world.</div></div>
+      <div class="grammar-card"><div class="form">Правило: дълги прилагателни (2+ срички)</div><div class="example">beautiful, interesting, dangerous → more / the most</div></div>
+      <div class="grammar-card"><div class="form">Кратки прилагателни → -er / -est (Comparatives тема)</div><div class="example">big→bigger, fast→faster, good→better</div></div>
+    </div>
+    <div style="margin-top:13px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--dgreen);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">✅ Positive</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          <span class="chip chip-green">attractive</span><span class="chip chip-green">beautiful</span>
+          <span class="chip chip-green">exciting</span><span class="chip chip-green">famous</span>
+          <span class="chip chip-green">important</span><span class="chip chip-green">interesting</span>
+          <span class="chip chip-green">talented</span><span class="chip chip-green">useful</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--drose);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">❌ Negative</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          <span class="chip chip-rose">boring</span><span class="chip chip-rose">dangerous</span>
+          <span class="chip chip-rose">difficult</span><span class="chip chip-rose">expensive</span>
+          <span class="chip chip-rose">frightening</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main">
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">1</div>Positive или Negative? Попълни за всяко прилагателно</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Прочети думата и напиши <strong>positive</strong> или <strong>negative</strong>.</p>
+      <div class="word-bank"><span class="chip chip-green">positive</span><span class="chip chip-rose">negative</span></div>
+      <div id="adj-ex1"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('adj','ex1')">✔ Провери</button><button class="btn-reset" onclick="rst('adj','ex1')">↺ Изтрий</button></div>
+      <div class="score-box" id="adj-score-ex1"></div>
+      <div class="pb-wrap" id="adj-pb-ex1-w" style="display:none"><div class="pb" id="adj-pb-ex1" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--blue)"><div class="icon">2</div>Comparative — попълни с more + прилагателното</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-green">more attractive</span><span class="chip chip-green">more beautiful</span><span class="chip chip-green">more boring</span><span class="chip chip-green">more dangerous</span><span class="chip chip-green">more difficult</span><span class="chip chip-green">more exciting</span><span class="chip chip-green">more expensive</span><span class="chip chip-green">more interesting</span><span class="chip chip-green">more talented</span><span class="chip chip-green">more useful</span></div>
+      <div id="adj-ex2"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--blue)" onclick="chk('adj','ex2')">✔ Провери</button><button class="btn-reset" onclick="rst('adj','ex2')">↺ Изтрий</button></div>
+      <div class="score-box" id="adj-score-ex2"></div>
+      <div class="pb-wrap" id="adj-pb-ex2-w" style="display:none"><div class="pb" id="adj-pb-ex2" style="background:linear-gradient(90deg,var(--blue),var(--dblue))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--indigo)"><div class="icon">3</div>Superlative — попълни с the most + прилагателното</div>
+    <div class="section-body">
+      <div class="word-bank"><span class="chip chip-indigo">the most beautiful</span><span class="chip chip-indigo">the most dangerous</span><span class="chip chip-indigo">the most exciting</span><span class="chip chip-indigo">the most famous</span><span class="chip chip-indigo">the most frightening</span><span class="chip chip-indigo">the most important</span><span class="chip chip-indigo">the most interesting</span><span class="chip chip-indigo">the most talented</span><span class="chip chip-indigo">the most useful</span></div>
+      <div id="adj-ex3"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--indigo)" onclick="chk('adj','ex3')">✔ Провери</button><button class="btn-reset" onclick="rst('adj','ex3')">↺ Изтрий</button></div>
+      <div class="score-box" id="adj-score-ex3"></div>
+      <div class="pb-wrap" id="adj-pb-ex3-w" style="display:none"><div class="pb" id="adj-pb-ex3" style="background:linear-gradient(90deg,var(--indigo),var(--dindigo))"></div></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" style="background:var(--green)"><div class="icon">4</div>Диалог — сравняваме филми</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:#555;margin-bottom:11px">Двама приятели обсъждат филм, гледан снощи.</p>
+      <div class="dialog-box" id="adj-dlg"></div>
+      <div class="controls"><button class="btn-check" style="background:var(--green)" onclick="chk('adj','dlg')">✔ Провери</button><button class="btn-reset" onclick="rst('adj','dlg')">↺ Изтрий</button></div>
+      <div class="score-box" id="adj-score-dlg"></div>
+      <div class="pb-wrap" id="adj-pb-dlg-w" style="display:none"><div class="pb" id="adj-pb-dlg" style="background:linear-gradient(90deg,var(--green),var(--dgreen))"></div></div>
     </div>
   </div>
 
@@ -1875,6 +1977,86 @@ DATA.comp = {
   ]
 };
 
+// ── ADJECTIVES OF QUALITY data ────────────────────────────────────────────
+DATA.adj = {
+  ex1:[
+    {text:["attractive — ",""],   answer:["positive"],  hint:["attractive = привлекателен → positive"]},
+    {text:["beautiful — ",""],    answer:["positive"],  hint:["beautiful = красив → positive"]},
+    {text:["boring — ",""],       answer:["negative"],  hint:["boring = скучен → negative"]},
+    {text:["dangerous — ",""],    answer:["negative"],  hint:["dangerous = опасен → negative"]},
+    {text:["difficult — ",""],    answer:["negative"],  hint:["difficult = труден → negative"]},
+    {text:["exciting — ",""],     answer:["positive"],  hint:["exciting = вълнуващ → positive"]},
+    {text:["expensive — ",""],    answer:["negative"],  hint:["expensive = скъп → negative"]},
+    {text:["famous — ",""],       answer:["positive"],  hint:["famous = известен → positive"]},
+    {text:["frightening — ",""],  answer:["negative"],  hint:["frightening = страшен → negative"]},
+    {text:["important — ",""],    answer:["positive"],  hint:["important = важен → positive"]},
+    {text:["interesting — ",""],  answer:["positive"],  hint:["interesting = интересен → positive"]},
+    {text:["talented — ",""],     answer:["positive"],  hint:["talented = талантлив → positive"]},
+    {text:["useful — ",""],       answer:["positive"],  hint:["useful = полезен → positive"]},
+  ],
+  ex2:[
+    {text:["London is "," (exciting) than our village."],          answer:["more exciting"],    hint:["exciting → more exciting"]},
+    {text:["This homework is "," (difficult) than yesterday's."],  answer:["more difficult"],   hint:["difficult → more difficult"]},
+    {text:["A sports car is "," (expensive) than a bike."],        answer:["more expensive"],   hint:["expensive → more expensive"]},
+    {text:["She is "," (talented) than her sister."],              answer:["more talented"],    hint:["talented → more talented"]},
+    {text:["Skiing is "," (dangerous) than walking."],             answer:["more dangerous"],   hint:["dangerous → more dangerous"]},
+    {text:["This book is "," (interesting) than the film."],       answer:["more interesting"], hint:["interesting → more interesting"]},
+    {text:["She looks "," (beautiful) in that dress."],            answer:["more beautiful"],   hint:["beautiful → more beautiful"]},
+    {text:["Maths is "," (boring) than English, I think!"],        answer:["more boring"],      hint:["boring → more boring"]},
+    {text:["My new phone is "," (useful) than my old one."],       answer:["more useful"],      hint:["useful → more useful"]},
+    {text:["Is football "," (attractive) than tennis to you?"],    answer:["more attractive"],  hint:["attractive → more attractive"]},
+  ],
+  ex3:[
+    {text:["He is "," (famous) actor in the world."],              answer:["the most famous"],      hint:["famous → the most famous"]},
+    {text:["That was "," (frightening) film I've ever seen!"],     answer:["the most frightening"], hint:["frightening → the most frightening"]},
+    {text:["English is "," (useful) language to learn."],          answer:["the most useful"],      hint:["useful → the most useful"]},
+    {text:["She is "," (talented) student in our school."],        answer:["the most talented"],    hint:["talented → the most talented"]},
+    {text:["That's "," (important) thing to remember."],           answer:["the most important"],   hint:["important → the most important"]},
+    {text:["It was "," (exciting) day of my life!"],               answer:["the most exciting"],    hint:["exciting → the most exciting"]},
+    {text:["This is "," (interesting) book I've ever read."],      answer:["the most interesting"], hint:["interesting → the most interesting"]},
+    {text:["What is "," (dangerous) sport in the world?"],         answer:["the most dangerous"],   hint:["dangerous → the most dangerous"]},
+  ],
+  dlg:[
+    {speaker:"A",text:["Did you see that film? I think it was "," (frightening) film this year!"], answer:["the most frightening"], hint:["frightening → the most frightening"]},
+    {speaker:"B",text:["Really? I thought it was "," (boring) than his last one."],                answer:["more boring"],           hint:["boring → more boring"]},
+    {speaker:"A",text:["No way! The effects were "," (exciting) part!"],                           answer:["the most exciting"],     hint:["exciting → the most exciting"]},
+    {speaker:"B",text:["I prefer films that are "," (interesting) — like documentaries."],         answer:["more interesting"],      hint:["interesting → more interesting"]},
+    {speaker:"A",text:["Aren't they "," (difficult) to understand?"],                              answer:["more difficult"],        hint:["difficult → more difficult"]},
+    {speaker:"B",text:["Not at all! They're "," (useful) — you actually learn something!"],        answer:["more useful"],           hint:["useful → more useful"]},
+    {speaker:"A",text:["OK, what's "," (famous) documentary you know?"],                           answer:["the most famous"],       hint:["famous → the most famous"]},
+    {speaker:"B",text:["Planet Earth! It's "," (beautiful) nature documentary ever made."],        answer:["the most beautiful"],    hint:["beautiful → the most beautiful"]},
+  ]
+};
+
+// Wide-blank builder for longer answers (more ___ / the most ___)
+function buildExW(data, group, id, w) {
+  const c = document.getElementById(id);
+  data.forEach((item, i) => {
+    const d = document.createElement('div'); d.className = 'exercise-item';
+    let h = `<span class="num">${i+1}.</span><span style="flex:1">`;
+    item.text.forEach((p, j) => {
+      h += p;
+      if (j < item.text.length - 1) h += `<input class="blank" data-group="${group}" data-idx="${i}" data-sub="${j}" type="text" autocomplete="off" spellcheck="false" style="width:${w||105}px">`;
+    });
+    h += `<span class="hint-text" id="hint-${group}-${i}"></span></span>`;
+    d.innerHTML = h; c.appendChild(d);
+  });
+}
+
+function buildDlgW(data, group, id, spClass, w) {
+  const c = document.getElementById(id);
+  data.forEach((line, i) => {
+    const d = document.createElement('div'); d.className = 'dialog-line';
+    let h = `<span class="speaker ${spClass(line.speaker)}">${line.speaker}:</span><span style="flex:1">`;
+    line.text.forEach((p, j) => {
+      h += p;
+      if (j < line.text.length - 1) h += `<input class="blank" data-group="${group}" data-idx="${i}" data-sub="${j}" type="text" autocomplete="off" spellcheck="false" style="width:${w||105}px">`;
+    });
+    h += `<span class="hint-text" id="hint-${group}-${i}"></span></span>`;
+    d.innerHTML = h; c.appendChild(d);
+  });
+}
+
 // Special builder for comp ex1/ex2 — shows: adjective → ___ → the ___
 function buildCompTable(data, group, containerId) {
   const container = document.getElementById(containerId);
@@ -1919,6 +2101,12 @@ buildEx(DATA.wh2.ex1,'wh2-ex1','wh2-ex1');
 buildEx(DATA.wh2.ex2,'wh2-ex2','wh2-ex2');
 buildDlg(DATA.wh2.dlg,'wh2-dlg','wh2-dlg',sp=>sp==='Teacher'?'sp-emerald':'sp-green');
 
+// Adj of Quality
+buildEx(DATA.adj.ex1, 'adj-ex1', 'adj-ex1');
+buildExW(DATA.adj.ex2, 'adj-ex2', 'adj-ex2', 160);
+buildExW(DATA.adj.ex3, 'adj-ex3', 'adj-ex3', 175);
+buildDlgW(DATA.adj.dlg, 'adj-dlg', 'adj-dlg', sp => sp==='A' ? 'sp-green' : 'sp-teal', 175);
+
 // Set default language after DOM is fully built
 setLang('bg');
 
@@ -1931,7 +2119,7 @@ function testFillAll() {
   const prefixMap = {
     waswere:'ww', did:'did', presSimple:'ps',
     presCont:'pc', irreg:'ir', there:'th', can:'can', prep:'prep',
-    wh1:'wh1', wh2:'wh2', comp:'comp'
+    wh1:'wh1', wh2:'wh2', comp:'comp', adj:'adj'
   };
   const prefix = prefixMap[pageId];
   if (!prefix || !DATA[prefix]) return;
@@ -1973,6 +2161,7 @@ const TOPIC_NAMES = {
   wh1:  'WH- Questions I (What/Where/When/Who/How/Why)',
   wh2:  'WH- Questions II (Which/Whose/How much-many-old-long)',
   comp: 'Comparatives & Superlatives',
+  adj:  'Adjectives of Quality (more / the most)',
 };
 
 // How many sections each topic has (prefix → array of section keys)
@@ -1988,6 +2177,7 @@ const TOPIC_SECTIONS = {
   wh1:  ['ex1','ex2','ex3','dlg'],
   wh2:  ['ex1','ex2','dlg'],
   comp: ['ex1','ex2','ex3','dlg'],
+  adj:  ['ex1','ex2','ex3','dlg'],
 };
 
 let currentModalTopic = '';
